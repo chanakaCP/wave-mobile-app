@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import '../models/User.dart';
 import 'Features/Auth/WelcomeScreenView.dart';
-import 'Features/Home/HomeScreen.dart';
+import 'Features/FirstView.dart';
 
 class App extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _AppState extends State<App> {
     if (user == null) {
       return WelcomeScreen();
     } else {
-      return HomeScreen(
+      return FirstView(
         user: user,
       );
     }

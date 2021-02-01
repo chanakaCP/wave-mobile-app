@@ -1,8 +1,8 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.14.4/
-cloud_firestore_web=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.2.1+2/
-firebase_auth=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.18.4+1/
-firebase_auth_web=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.3.2+3/
-firebase_core=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.3/
-firebase_core_web=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.1+1/
-firebase_storage=/home/chanaka/Development/flutter_linux_1.22.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-4.0.1/
+cloud_firestore=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.14.4/
+cloud_firestore_web=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.2.1+2/
+firebase_auth=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.18.4+1/
+firebase_auth_web=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.3.2+3/
+firebase_core=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.3/
+firebase_core_web=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.1+1/
+firebase_storage=/home/ashe/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-4.0.1/
