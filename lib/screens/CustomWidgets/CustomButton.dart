@@ -38,7 +38,7 @@ class CustomButton extends StatelessWidget {
         ),
         color: bgColor,
         textColor: textColor,
-        splashColor: Colors.green[200],
+        splashColor: Colors.blue[200],
         child: Text(
           title,
           style: TextStyle(

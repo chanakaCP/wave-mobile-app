@@ -26,7 +26,6 @@ class SignUpScreen extends StatelessWidget {
             child: Column(
               children: [
                 CustomFormField(
-                  fillColor: Colors.deepPurple[100],
                   hintText: "Username",
                   isPass: false,
                   fieldController: model.userNameController,
@@ -34,21 +33,18 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: blockHeight * 2.5),
                 CustomFormField(
-                    fillColor: Colors.deepPurple[100],
                     hintText: "Email",
                     isPass: false,
                     fieldController: model.emailController,
                     prefixIcon: Icons.mail),
                 SizedBox(height: blockHeight * 2.5),
                 CustomFormField(
-                    fillColor: Colors.deepPurple[100],
                     hintText: "Phone number",
                     isPass: false,
                     fieldController: model.mobileController,
                     prefixIcon: Icons.phone),
                 SizedBox(height: blockHeight * 2.5),
                 CustomFormField(
-                  fillColor: Colors.deepPurple[100],
                   hintText: "Password",
                   isPass: true,
                   fieldController: model.passController,
@@ -57,7 +53,7 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(height: blockHeight * 2.5),
                 CustomButton(
                   title: "Register",
-                  bgColor: Colors.deepPurple[600],
+                  bgColor: Colors.blue[800],
                   textColor: Colors.white,
                   callback: () {
                     model.onClickSignUp();
@@ -82,21 +78,21 @@ class SignUpScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Container(
-                                    color: Colors.deepPurple[400],
+                                    color: Colors.blue[900],
                                     height: blockHeight * .25,
                                   ),
                                 ),
                                 SizedBox(width: blockWidth * 2),
                                 CustomText(
                                   text: "Already have an account ?",
-                                  color: Colors.deepPurple[400],
+                                  color: Colors.blue[700],
                                   size: blockWidth * 4,
                                   weight: FontWeight.w400,
                                 ),
                                 SizedBox(width: blockWidth * 2),
                                 Expanded(
                                   child: Container(
-                                    color: Colors.deepPurple[400],
+                                    color: Colors.blue[900],
                                     height: blockHeight * .25,
                                   ),
                                 ),
@@ -107,8 +103,8 @@ class SignUpScreen extends StatelessWidget {
                           CustomButton(
                             title: "Login",
                             bgColor: Colors.transparent,
-                            textColor: Colors.deepPurple[600],
-                            borderColor: Colors.deepPurple[600],
+                            textColor: Colors.blue[800],
+                            borderColor: Colors.blue[800],
                             height: blockHeight * 5,
                             width: blockWidth * 30,
                             fontSize: blockWidth * 4,

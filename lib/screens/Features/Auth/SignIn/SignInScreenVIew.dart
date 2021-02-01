@@ -26,7 +26,6 @@ class SignInScreen extends StatelessWidget {
             child: Column(
               children: [
                 CustomFormField(
-                  fillColor: Colors.deepPurple[100],
                   hintText: "username",
                   isPass: false,
                   fieldController: model.userNameController,
@@ -34,7 +33,6 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: blockHeight * 2.5),
                 CustomFormField(
-                  fillColor: Colors.deepPurple[100],
                   hintText: "password",
                   isPass: true,
                   fieldController: model.passController,
@@ -43,7 +41,7 @@ class SignInScreen extends StatelessWidget {
                 SizedBox(height: blockHeight * 2.5),
                 CustomButton(
                   title: "Log In",
-                  bgColor: Colors.deepPurple[600],
+                  bgColor: Colors.blue[800],
                   textColor: Colors.white,
                   callback: () {
                     model.onClickSignIn();
@@ -68,21 +66,21 @@ class SignInScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Container(
-                                    color: Colors.deepPurple[400],
+                                    color: Colors.blue[900],
                                     height: blockHeight * .25,
                                   ),
                                 ),
                                 SizedBox(width: blockWidth * 2),
                                 CustomText(
                                   text: "Don't have an account ?",
-                                  color: Colors.deepPurple[400],
+                                  color: Colors.blue[700],
                                   size: blockWidth * 4,
                                   weight: FontWeight.w400,
                                 ),
                                 SizedBox(width: blockWidth * 2),
                                 Expanded(
                                   child: Container(
-                                    color: Colors.deepPurple[400],
+                                    color: Colors.blue[900],
                                     height: blockHeight * .25,
                                   ),
                                 ),
@@ -93,8 +91,8 @@ class SignInScreen extends StatelessWidget {
                           CustomButton(
                             title: "Register",
                             bgColor: Colors.transparent,
-                            textColor: Colors.deepPurple[600],
-                            borderColor: Colors.deepPurple[600],
+                            textColor: Colors.blue[800],
+                            borderColor: Colors.blue[800],
                             height: blockHeight * 5,
                             width: blockWidth * 30,
                             fontSize: blockWidth * 4,

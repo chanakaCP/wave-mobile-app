@@ -44,26 +44,30 @@ class _CustomFormFieldState extends State<CustomFormField> {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(10.0),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: Colors.blue[900]),
             borderRadius: BorderRadius.all(Radius.circular(50.0)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: Colors.blue[900]),
             borderRadius: BorderRadius.all(Radius.circular(50.0)),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: Colors.blue[900]),
             borderRadius: BorderRadius.circular(50.0),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: Colors.blue[900]),
             borderRadius: BorderRadius.circular(50.0),
           ),
-          prefixIcon: Icon(this.widget.prefixIcon),
+          prefixIcon: Icon(
+            this.widget.prefixIcon,
+            color: Colors.blue[800],
+          ),
           suffixIcon: (this.widget.isPass == true)
               ? IconButton(
                   icon: Icon(
                     (isHide == true) ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.blue[800],
                   ),
                   onPressed: () {
                     setState(() {
@@ -72,10 +76,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
                   })
               : null,
           hintText: this.widget.hintText,
-          filled: true,
-          fillColor: (this.widget.fillColor == null)
-              ? Colors.white
-              : this.widget.fillColor,
+          hintStyle: TextStyle(color: Colors.blue[800]),
           border: InputBorder.none,
         ),
       ),
