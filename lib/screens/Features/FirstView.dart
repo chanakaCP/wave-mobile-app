@@ -31,31 +31,33 @@ class FirstView extends StatelessWidget {
                 )
               ],
             ),
-            body: Column(
-              children: [
-                Container(
-                  height: blockHeight * 86,
-                  child: model.children[model.currentIndex],
-                ),
-                Container(
-                  height: blockHeight * 7.5,
-                  child: BottomNavigationBar(
-                    onTap: model.onTabTapped,
-                    currentIndex: model.currentIndex,
-                    selectedItemColor: Colors.deepPurple[600],
-                    items: [
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
-                        label: "Home",
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.person),
-                        label: "profile",
-                      ),
-                    ],
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: blockHeight * 86,
+                    child: model.children[model.currentIndex],
                   ),
-                ),
-              ],
+                  Container(
+                    height: blockHeight * 7.5,
+                    child: BottomNavigationBar(
+                      onTap: model.onTabTapped,
+                      currentIndex: model.currentIndex,
+                      selectedItemColor: Colors.deepPurple[600],
+                      items: [
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.home),
+                          label: "Home",
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.person),
+                          label: "profile",
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );

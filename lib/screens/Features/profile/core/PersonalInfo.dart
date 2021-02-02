@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wave_mobile_app/screens/Features/profile/PersonalInformation/ChangePassword/ChangePasswordView.dart';
 
 import '../../../../Shared/SizeConfig.dart';
 import '../../../CustomWidgets/CustomText.dart';
@@ -59,32 +61,39 @@ class PersonalInfo extends StatelessWidget {
                 Divider(
                   height: blockHeight,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: blockWidth * 7.5,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: CustomText(
-                          text: "Change Password",
+                InkWell(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: blockWidth * 7.5,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: CustomText(
+                            text: "Change Password",
+                            color: Colors.black,
+                            size: blockHeight * 2,
+                            weight: FontWeight.w400,
+                          ),
+                        ),
+                        IconButton(
+                          padding: EdgeInsets.only(bottom: blockHeight),
                           color: Colors.black,
-                          size: blockHeight * 2,
-                          weight: FontWeight.w400,
-                        ),
-                      ),
-                      IconButton(
-                        padding: EdgeInsets.only(bottom: blockHeight),
-                        color: Colors.black,
-                        icon: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: blockHeight * 3,
-                        ),
-                        onPressed: () {},
-                      )
-                    ],
+                          icon: Icon(
+                            Icons.keyboard_arrow_right,
+                            size: blockHeight * 3,
+                          ),
+                          onPressed: () {
+                            Get.to(ChangePasswordView());
+                          },
+                        )
+                      ],
+                    ),
                   ),
+                  onTap: () {
+                    Get.to(ChangePasswordView());
+                  },
                 ),
               ],
             ),

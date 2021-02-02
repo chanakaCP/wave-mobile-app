@@ -14,6 +14,7 @@ class FirstViewModel extends ChangeNotifier{
     ProfileView(),
   ];
 
+
   void onTabTapped(int index) {
     currentIndex = index;
     notifyListeners();
