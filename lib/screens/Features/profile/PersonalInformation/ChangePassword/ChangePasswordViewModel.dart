@@ -25,7 +25,6 @@ class ChangePasswordViewModel extends ChangeNotifier {
     if (formKey.currentState.validate()) {
       isLoading = true;
       isError = false;
-      notifyListeners();
 
       if (passController.text == oldPassController.text) {
         isLoading = false;
@@ -45,6 +44,7 @@ class ChangePasswordViewModel extends ChangeNotifier {
         passController.text = '';
         oldPassController.text = '';
       }
+      notifyListeners();
     }
   }
 }

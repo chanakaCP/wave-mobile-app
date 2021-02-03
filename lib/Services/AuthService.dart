@@ -37,7 +37,8 @@ class AuthService {
         'userName': regUser.userName,
         'mobileNumber': regUser.mobileNumber,
         'email': regUser.email,
-        'id': result.user.uid
+        'id': result.user.uid,
+        'profilePic' : "",
       });
       return _userFromFireBaseUser(user);
     } catch (e) {

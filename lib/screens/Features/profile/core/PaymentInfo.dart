@@ -81,36 +81,6 @@ class PaymentInfo extends StatelessWidget {
                     ],
                   ),
                 ),
-                Divider(
-                  height: blockHeight,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: blockWidth * 7.5,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: CustomText(
-                          text: "Transaction History",
-                          color: Colors.black,
-                          size: blockHeight * 2,
-                          weight: FontWeight.w400,
-                        ),
-                      ),
-                      IconButton(
-                        padding: EdgeInsets.only(bottom: blockHeight),
-                        color: Colors.black,
-                        icon: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: blockHeight * 3,
-                        ),
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
-                ),
               ],
             ),
           )

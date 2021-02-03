@@ -62,6 +62,8 @@ class ChangePasswordView extends StatelessWidget {
                       ),
                       SizedBox(height: blockHeight * 2.5),
                       CustomButton(
+                        width: blockWidth * 60,
+                        height: blockHeight * 6,
                         title: "Change Password",
                         bgColor: Colors.blue[800],
                         textColor: Colors.white,
@@ -86,29 +88,7 @@ class ChangePasswordView extends StatelessWidget {
                           : Container(),
                       SizedBox(height: blockHeight * 3.5),
                       (model.isLoading == false)
-                          ? Column(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          color: Colors.blue[900],
-                                          height: blockHeight * .25,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                          color: Colors.blue[900],
-                                          height: blockHeight * .25,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )
+                          ? Container()
                           : CustomLoading(),
                     ],
                   ),
