@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 
-import 'Home/HomeScreen.dart';
+import 'Home/HomeScreenView.dart';
 import 'profile/ProfileScreenView.dart';
 
 class FirstViewModel extends ChangeNotifier {
