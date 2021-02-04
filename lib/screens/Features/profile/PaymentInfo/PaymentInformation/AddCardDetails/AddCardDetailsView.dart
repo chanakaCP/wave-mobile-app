@@ -20,21 +20,24 @@ class AddCardDetailsView extends StatelessWidget {
           body: SafeArea(
             child: AnimatedContainer(
               padding: EdgeInsets.symmetric(
-                  vertical: blockHeight * 7.5,
-                  horizontal: blockWidth * 2,
-                ),
+                vertical: blockHeight * 7.5,
+                horizontal: blockWidth * 2,
+              ),
               duration: Duration(milliseconds: 300),
               child: Stack(children: [
                 CreditCardInputForm(
                   showResetButton: true,
                   onStateChange: (currentState, cardInfo) {
-                    print(currentState);
-                    if(currentState == InputState.NUMBER){
+                    if (currentState == InputState.NUMBER) {
                       model.cardNumber = CardNumber() as String;
                     }
 
-                    if (currentState == InputState.DONE){
-                    print(model.cardNumber);
+                    if (currentState == InputState.DONE) {
+                      print(cardInfo);
+                      print(cardInfo.name);
+                      print(cardInfo.cardNumber);
+                      print(cardInfo.validate);
+                      print(cardInfo.cvv);
                     }
                   },
                   // customCaptions: customCaptions,
