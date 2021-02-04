@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
-
 import 'AddCardDetails/AddCardDetailsView.dart';
 import 'MyCardDetails/MyCardDetailesView.dart';
 

@@ -7,11 +7,10 @@ import 'package:path/path.dart' as path;
 import 'package:wave_mobile_app/Services/databaseService.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomProfileTabContainer.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'ChangePassword/ChangePasswordView.dart';
 
 // ignore: must_be_immutable
-class PersonalInfo extends StatelessWidget {
+class PersonalInfoContainer extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
 

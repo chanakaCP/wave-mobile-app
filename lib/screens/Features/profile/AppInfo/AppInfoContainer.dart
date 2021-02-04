@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomProfileTabContainer.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
-class PaymentInfo extends StatelessWidget {
+class AppInfoContainer extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
 
@@ -21,17 +20,7 @@ class PaymentInfo extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: blockHeight),
         child: Column(
           children: [
-            CustomProfileTabContainer(
-              title: "My Business Card",
-              callback: () {},
-            ),
-            Divider(
-              height: blockHeight,
-            ),
-            CustomProfileTabContainer(
-              title: "Payment Details",
-              callback: () {},
-            ),
+            CustomProfileTabContainer(title: "Contact Us", callback: () {}),
           ],
         ),
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/screens/Features/profile/AppInfo/AppInfo.dart';
+import 'package:wave_mobile_app/screens/Features/profile/AppInfo/AppInfoContainer.dart';
 import 'ProfileScreenViewModel.dart';
-import 'PaymentInfo/PaymentInfo.dart';
-import 'PersonalInformation/PersonalInfo.dart';
+import 'PaymentInfo/PaymentInfoConteiner.dart';
+import 'PersonalInformation/PersonalInfoContainer.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
@@ -19,11 +19,11 @@ class ProfileScreen extends StatelessWidget {
         return Column(
           children: [
             SizedBox(height: blockHeight * 10),
-            PersonalInfo(),
+            PersonalInfoContainer(),
             SizedBox(height: blockHeight),
-            PaymentInfo(),
+            PaymentInfoContainer(),
             SizedBox(height: blockHeight),
-            AppInfo()
+            AppInfoContainer()
           ],
         );
       },
