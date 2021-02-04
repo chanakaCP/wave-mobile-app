@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wave_mobile_app/Services/AuthService.dart';
+import 'package:wave_mobile_app/Services/databaseService.dart';
+import 'package:wave_mobile_app/models/CardDetails.dart';
 
 class AddCardDetailsViewModel extends ChangeNotifier {
   String cardNumber, name, validate, cvv;
+  CardDetails card = CardDetails();
+  DatabaseService ds = DatabaseService();
+
   final Map<String, String> customCaptions = {
     'PREV': 'Prev',
     'NEXT': 'Next',
@@ -51,5 +57,9 @@ class AddCardDetailsViewModel extends ChangeNotifier {
   // void initState() {
   //   super.initState();
   // }
+
+  onClickDone(){
+    ds.addCardDetails(card);
+  }
 
 } 

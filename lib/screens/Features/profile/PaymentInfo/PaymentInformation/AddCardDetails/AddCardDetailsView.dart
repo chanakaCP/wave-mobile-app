@@ -1,4 +1,3 @@
-import 'package:credit_card_input_form/components/card_number.dart';
 import 'package:credit_card_input_form/constants/constanst.dart';
 import 'package:credit_card_input_form/credit_card_input_form.dart';
 import 'package:flutter/material.dart';
@@ -20,21 +19,21 @@ class AddCardDetailsView extends StatelessWidget {
           body: SafeArea(
             child: AnimatedContainer(
               padding: EdgeInsets.symmetric(
-                  vertical: blockHeight * 7.5,
-                  horizontal: blockWidth * 2,
-                ),
+                vertical: blockHeight * 7.5,
+                horizontal: blockWidth * 2,
+              ),
               duration: Duration(milliseconds: 300),
               child: Stack(children: [
                 CreditCardInputForm(
                   showResetButton: true,
                   onStateChange: (currentState, cardInfo) {
-                    print(currentState);
-                    if(currentState == InputState.NUMBER){
-                      model.cardNumber = CardNumber() as String;
-                    }
+                    if (currentState == InputState.DONE) {
+                      model.card.cardNumber = cardInfo.cardNumber;
+                      model.card.name = cardInfo.name;
+                      model.card.validate = cardInfo.validate;
+                      model.card.cvv = cardInfo.cvv;
 
-                    if (currentState == InputState.DONE){
-                    print(model.cardNumber);
+                      model.onClickDone();
                     }
                   },
                   // customCaptions: customCaptions,

@@ -77,7 +77,7 @@ class _PaymentTabViewScreenState extends State<PaymentTabViewScreen>
                   ),
                 ),
                 Container(
-                  height: blockHeight * 75,
+                  height: blockHeight * 88,
                   child: TabBarView(
                     controller: _tabController,
                     children: [

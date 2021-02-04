@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:wave_mobile_app/models/CardDetails.dart';
 
 class DatabaseService {
   final firestoreInstance = FirebaseFirestore.instance;
@@ -16,6 +17,22 @@ class DatabaseService {
           .doc(user.uid.toString())
           .update({
             'profilePic' : profilePicURL
+          });
+    } catch (e) {
+      print("ERROR WHILE UPLOADING DATA : " + e.toString());
+    }
+  }
+
+  addCardDetails(CardDetails card) async{
+    User user = _auth.currentUser;
+    try {
+      await firestoreInstance
+          .collection('users')
+          .doc(user.uid.toString())
+          .update({
+            'cardInfo' : FieldValue.arrayUnion([
+          {"cardNumber": card.cardNumber, "name": card.name, "validate": card.validate, "cvv": card.cvv}
+        ])
           });
     } catch (e) {
       print("ERROR WHILE UPLOADING DATA : " + e.toString());
@@ -39,4 +56,18 @@ class DatabaseService {
 
     return url;
   }
+
+  Stream<dynamic> getCards() {
+    User user = _auth.currentUser;
+    Stream<DocumentSnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("users").doc(user.uid.toString()).snapshots();
+      // List<Card>
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+    }
+
+    return snapshot;
+  }
+
 }

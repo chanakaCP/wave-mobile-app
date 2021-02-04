@@ -34,6 +34,7 @@ dependencies:
   file_picker: 1.4.3+1
   credit_card_input_form: ^2.1.6
   flip_card: ^0.4.4
+  awesome_card: ^1.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
