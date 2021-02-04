@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../Shared/SizeConfig.dart';
-import '../../models/User.dart';
+import 'package:wave_mobile_app/Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/models/User.dart';
 import 'FirstViewModel.dart';
 
 // ignore: must_be_immutable
@@ -35,6 +34,7 @@ class FirstView extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
+                    padding: EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
                     height: blockHeight * 86,
                     child: model.children[model.currentIndex],
                   ),
@@ -43,7 +43,7 @@ class FirstView extends StatelessWidget {
                     child: BottomNavigationBar(
                       onTap: model.onTabTapped,
                       currentIndex: model.currentIndex,
-                      selectedItemColor: Colors.deepPurple[600],
+                      selectedItemColor: Colors.blue[800],
                       items: [
                         BottomNavigationBarItem(
                           icon: Icon(Icons.home),

@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:wave_mobile_app/Services/AuthService.dart';
 
-import '../../Services/AuthService.dart';
 import 'Home/HomeScreen.dart';
-import 'profile/ProfileView.dart';
+import 'profile/ProfileScreenView.dart';
 
-class FirstViewModel extends ChangeNotifier{
+class FirstViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
 
   int currentIndex = 0;
 
   final List<Widget> children = [
     HomeScreen(),
-    ProfileView(),
+    ProfileScreen(),
   ];
-
 
   void onTabTapped(int index) {
     currentIndex = index;

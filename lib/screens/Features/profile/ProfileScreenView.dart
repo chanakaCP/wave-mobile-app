@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../../Shared/SizeConfig.dart';
-import 'ProfileViewModel.dart';
-import 'core/AppInfo.dart';
-import 'core/PaymentInfo.dart';
-import 'core/PersonalInfo.dart';
+import 'package:wave_mobile_app/Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/screens/Features/profile/AppInfo/AppInfo.dart';
+import 'ProfileScreenViewModel.dart';
+import 'PaymentInfo/PaymentInfo.dart';
+import 'PersonalInformation/PersonalInfo.dart';
 
 // ignore: must_be_immutable
-class ProfileView extends StatelessWidget {
-
+class ProfileScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
 
-
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ProfileViewModel>.reactive(
-      viewModelBuilder: () => ProfileViewModel(),
+    return ViewModelBuilder<ProfileScreenViewModel>.reactive(
+      viewModelBuilder: () => ProfileScreenViewModel(),
       builder: (_, model, child) {
         return Column(
           children: [
