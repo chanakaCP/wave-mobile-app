@@ -59,6 +59,10 @@ flutter:
   assets:
     - assets/
     - assets/logo/
+    - assets/icons/bills/
+    - assets/icons/media/
+    - assets/icons/police/
+  
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
