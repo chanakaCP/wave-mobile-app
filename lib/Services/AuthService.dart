@@ -37,7 +37,8 @@ class AuthService {
         'userName': regUser.userName,
         'mobileNumber': regUser.mobileNumber,
         'email': regUser.email,
-        'id': result.user.uid
+        'id': result.user.uid,
+        'profilePic' : "",
       });
       return _userFromFireBaseUser(user);
     } catch (e) {
@@ -53,5 +54,15 @@ class AuthService {
       print(e.toString());
       return null;
     }
+  }
+
+  Future changePassword(String password) async{
+    User user = _auth.currentUser;
+   
+    user.updatePassword(password).then((_){
+      print("Successfully changed password");
+    }).catchError((error){
+      print("Password can't be changed" + error.toString());
+    });
   }
 }
