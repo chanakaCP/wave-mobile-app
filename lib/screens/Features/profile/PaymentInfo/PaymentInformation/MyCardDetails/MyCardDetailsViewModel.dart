@@ -11,6 +11,7 @@ class MyCardDetailsViewModel extends ChangeNotifier {
   double blockWidth = SizeConfig.safeBlockHorizontal;
   final DatabaseService databaseService = DatabaseService();
   Stream cardStream;
+  List<dynamic> cardList = List();
 
   getDataStream() {
     cardStream = databaseService.getCards();
@@ -18,8 +19,9 @@ class MyCardDetailsViewModel extends ChangeNotifier {
   }
 
   loadCards(AsyncSnapshot<DocumentSnapshot> snapshot, BuildContext context) {
-    List<dynamic> cardList = List(); 
-    cardList = snapshot.data["cardInfo"];
+    if (snapshot.hasData && snapshot.data.exists) {
+      cardList = snapshot.data["cardInfo"];
+    }
     return cardList
         .map(
           (doc) => Container(

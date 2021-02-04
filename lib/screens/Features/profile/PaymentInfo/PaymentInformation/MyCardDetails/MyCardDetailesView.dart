@@ -24,7 +24,7 @@ class MyCardDetailsView extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CustomLoading();
               } else {
-                if (snapshot.hasData) {
+                if (!snapshot.data.data()["cardInfo"].isEmpty) {
                   return ListView(
                     scrollDirection: Axis.vertical,
                     children: model.loadCards(snapshot, context),
