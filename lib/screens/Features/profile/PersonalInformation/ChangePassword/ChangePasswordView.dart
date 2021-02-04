@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../../../../Shared/SizeConfig.dart';
-import '../../../../CustomWidgets/CustomButton.dart';
-import '../../../../CustomWidgets/CustomFormField.dart';
-import '../../../../CustomWidgets/CustomLoading.dart';
-import '../../../../CustomWidgets/CustomText.dart';
+import 'package:wave_mobile_app/Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomButton.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomFormField.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'ChangePasswordViewModel.dart';
 
 // ignore: must_be_immutable

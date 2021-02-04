@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-import '../../../../../Services/AuthService.dart';
+import 'package:wave_mobile_app/Services/AuthService.dart';
 
 class ChangePasswordViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
