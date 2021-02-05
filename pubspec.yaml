@@ -59,6 +59,7 @@ flutter:
   assets:
     - assets/
     - assets/logo/
+    - assets/icons/
     - assets/icons/bills/
     - assets/icons/media/
     - assets/icons/police/
