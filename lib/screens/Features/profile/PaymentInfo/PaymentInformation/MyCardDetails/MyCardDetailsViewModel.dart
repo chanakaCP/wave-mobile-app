@@ -23,9 +23,9 @@ class MyCardDetailsViewModel extends ChangeNotifier {
     return cardList
         .map(
           (doc) => Container(
-            padding: EdgeInsets.symmetric(vertical: blockHeight * 2),
+            padding: EdgeInsets.symmetric(vertical: blockHeight ),
             child: CreditCard(
-              height: blockHeight * 25,
+              height: blockHeight * 24,
               cardNumber: doc["cardNumber"],
               cardExpiry: doc["validate"],
               cardHolderName: doc["name"],

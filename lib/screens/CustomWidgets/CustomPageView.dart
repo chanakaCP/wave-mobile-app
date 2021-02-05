@@ -8,9 +8,9 @@ class CustomPageView extends StatelessWidget {
   final Widget childWidget;
 
   CustomPageView({
-    this.callbackHead, 
-    this.callbackTail,
-    this.childWidget,
+    @required this.callbackHead, 
+    @required this.callbackTail,
+    @required this.childWidget,
   });
 
   double blockHeight = SizeConfig.safeBlockVertical;
