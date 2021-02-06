@@ -53,7 +53,6 @@ class PersonalInfoContainer extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: blockHeight),
         child: Column(
           children: [
             InkWell(

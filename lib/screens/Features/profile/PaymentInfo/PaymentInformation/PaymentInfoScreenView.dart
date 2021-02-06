@@ -5,7 +5,6 @@ import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/PaymentInformation/AddCardDetails/AddCardDetailsView.dart';
 import 'MyCardDetails/MyCardDetailesView.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class PaymentInfoScreenView extends StatefulWidget {
   @override

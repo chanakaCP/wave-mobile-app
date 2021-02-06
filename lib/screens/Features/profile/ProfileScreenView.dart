@@ -16,15 +16,18 @@ class ProfileScreen extends StatelessWidget {
     return ViewModelBuilder<ProfileScreenViewModel>.reactive(
       viewModelBuilder: () => ProfileScreenViewModel(),
       builder: (_, model, child) {
-        return Column(
-          children: [
-            SizedBox(height: blockHeight * 10),
-            PersonalInfoContainer(),
-            SizedBox(height: blockHeight),
-            PaymentInfoContainer(),
-            SizedBox(height: blockHeight),
-            AppInfoContainer()
-          ],
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: blockWidth * 1.5),
+          child: Column(
+            children: [
+              SizedBox(height: blockHeight * 10),
+              PersonalInfoContainer(),
+              SizedBox(height: blockHeight),
+              PaymentInfoContainer(),
+              SizedBox(height: blockHeight),
+              AppInfoContainer()
+            ],
+          ),
         );
       },
     );

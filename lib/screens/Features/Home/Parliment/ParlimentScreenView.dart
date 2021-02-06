@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Parliment/ParlimentScreenViewModel.dart';
 
 class ParlimentScreen extends StatelessWidget {
@@ -10,18 +12,19 @@ class ParlimentScreen extends StatelessWidget {
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
-            appBar: AppBar(
-              actions: [
-                RaisedButton(
-                  onPressed: () async {
-                    await model.authService.signOut();
-                  },
-                  child: Text("LOGOUT"),
-                )
-              ],
-            ),
-            body: Container(
-              child: Text("Parliment screen"),
+            body: CustomPageView(
+              title: "Parliment",
+              callbackHead: () {
+                Get.back();
+              },
+              callbackTail: () async {
+                await model.authService.signOut();
+              },
+              childWidget: SingleChildScrollView(
+                child: Container(
+                  child: Text("Parliment screen"),
+                ),
+              ),
             ),
           ),
         );

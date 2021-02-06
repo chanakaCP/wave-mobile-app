@@ -18,17 +18,4 @@ class FirstViewModel extends ChangeNotifier {
     currentIndex = index;
     notifyListeners();
   }
-
-  // String getAppbarTitle(int index) {
-  //   String title;
-  //   switch (index) {
-  //     case 0:
-  //       title = "Home";
-  //       break;
-  //     case 1:
-  //       title = "profile";
-  //       break;
-  //   }
-  //   return title;
-  // }
 }

@@ -32,7 +32,7 @@ class ChangePasswordView extends StatelessWidget {
               childWidget: SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: blockHeight * 7.5,
+                    vertical: blockHeight * 15,
                     horizontal: blockWidth * 10,
                   ),
                   child: Form(
@@ -61,8 +61,9 @@ class ChangePasswordView extends StatelessWidget {
                         ),
                         SizedBox(height: blockHeight * 2.5),
                         CustomButton(
-                          width: blockWidth * 60,
-                          height: blockHeight * 6,
+                          width: blockWidth * 45,
+                          height: blockHeight * 5,
+                          fontSize: blockWidth * 4,
                           title: "Change Password",
                           bgColor: Colors.blue[800],
                           textColor: Colors.white,
