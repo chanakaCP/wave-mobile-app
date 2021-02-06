@@ -17,7 +17,7 @@ class MyCardDetailsView extends StatelessWidget {
       viewModelBuilder: () => MyCardDetailsViewModel(),
       builder: (_, model, child) {
         return Container(
-          // padding: EdgeInsets.only(top: blockHeight ),
+          padding: EdgeInsets.only(top: blockHeight * 3),
           child: StreamBuilder<DocumentSnapshot>(
             stream: model.getDataStream(),
             builder: (context, snapshot) {

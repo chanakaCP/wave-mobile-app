@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/screens/Features/profile/AppInfo/AppInfoContainer.dart';
+import 'package:wave_mobile_app/screens/Features/profile/AppInfo/AppInfoContainerView.dart';
 import 'ProfileScreenViewModel.dart';
-import 'PaymentInfo/PaymentInfoConteiner.dart';
-import 'PersonalInformation/PersonalInfoContainer.dart';
+import 'PaymentInfo/PaymentInfoConteinerView.dart';
+import 'PersonalInformation/PersonalInfoContainerView.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {

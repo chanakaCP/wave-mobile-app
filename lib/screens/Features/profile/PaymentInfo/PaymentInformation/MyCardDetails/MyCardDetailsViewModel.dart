@@ -2,9 +2,8 @@ import 'package:awesome_card/awesome_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../Services/databaseService.dart';
-import '../../../../../../Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/Services/databaseService.dart';
+import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 
 class MyCardDetailsViewModel extends ChangeNotifier {
   double blockHeight = SizeConfig.safeBlockVertical;
@@ -25,15 +24,14 @@ class MyCardDetailsViewModel extends ChangeNotifier {
     return cardList
         .map(
           (doc) => Container(
-            padding: EdgeInsets.symmetric(vertical: blockHeight ),
+            padding: EdgeInsets.symmetric(vertical: blockHeight),
             child: CreditCard(
-              height: blockHeight * 24,
+              height: blockHeight * 25,
               cardNumber: doc["cardNumber"],
               cardExpiry: doc["validate"],
               cardHolderName: doc["name"],
               frontBackground: CardBackgrounds.black,
               backBackground: CardBackgrounds.white,
-              // showShadow: true,
             ),
           ),
         )

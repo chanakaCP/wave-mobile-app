@@ -26,7 +26,7 @@ class PaymentInfoContainer extends StatelessWidget {
             CustomProfileTabContainer(
               title: "My Business Card",
               callback: () {
-                Get.to(PaymentTabViewScreen());
+                Get.to(PaymentInfoViewScreen());
               },
             ),
             Divider(

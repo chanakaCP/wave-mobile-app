@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
 import 'package:wave_mobile_app/models/CardDetails.dart';
 
@@ -58,8 +57,7 @@ class AddCardDetailsViewModel extends ChangeNotifier {
   //   super.initState();
   // }
 
-  onClickDone(){
+  onClickDone() {
     ds.addCardDetails(card);
   }
-
-} 
+}

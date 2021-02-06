@@ -19,72 +19,79 @@ class ChangePasswordView extends StatelessWidget {
     return ViewModelBuilder<ChangePasswordViewModel>.reactive(
       viewModelBuilder: () => ChangePasswordViewModel(),
       builder: (_, model, child) {
-        return CustomPageView(
-          callbackHead: () {
-            Get.back();
-          },
-          callbackTail: () async {
-            await model.authService.signOut();
-          },
-          childWidget: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: blockHeight * 7.5,
-                horizontal: blockWidth * 10,
-              ),
-              child: Form(
-                key: model.formKey,
-                child: Column(
-                  children: [
-                    CustomFormField(
-                      hintText: "old password",
-                      isPass: true,
-                      fieldController: model.oldPassController,
-                      prefixIcon: Icons.lock,
+        return SafeArea(
+          child: Scaffold(
+            body: CustomPageView(
+              callbackHead: () {
+                Get.back();
+              },
+              callbackTail: () async {
+                await model.authService.signOut();
+              },
+              title: "change password",
+              childWidget: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: blockHeight * 7.5,
+                    horizontal: blockWidth * 10,
+                  ),
+                  child: Form(
+                    key: model.formKey,
+                    child: Column(
+                      children: [
+                        CustomFormField(
+                          hintText: "old password",
+                          isPass: true,
+                          fieldController: model.oldPassController,
+                          prefixIcon: Icons.lock,
+                        ),
+                        SizedBox(height: blockHeight * 2.5),
+                        CustomFormField(
+                          hintText: "new password",
+                          isPass: true,
+                          fieldController: model.passController,
+                          prefixIcon: Icons.lock,
+                        ),
+                        SizedBox(height: blockHeight * 2.5),
+                        CustomFormField(
+                          hintText: "confirm new password",
+                          isPass: true,
+                          fieldController: model.confirmPassController,
+                          prefixIcon: Icons.lock,
+                        ),
+                        SizedBox(height: blockHeight * 2.5),
+                        CustomButton(
+                          width: blockWidth * 60,
+                          height: blockHeight * 6,
+                          title: "Change Password",
+                          bgColor: Colors.blue[800],
+                          textColor: Colors.white,
+                          callback: () {
+                            model.onClickChangePassword();
+                          },
+                        ),
+                        SizedBox(height: blockHeight * 1.5),
+                        (model.isError == true)
+                            ? CustomText(
+                                text: model.error,
+                                color: Colors.red,
+                                size: blockWidth * 4,
+                              )
+                            : Container(),
+                        (model.isSuccess == true)
+                            ? CustomText(
+                                text: "Successfully changed password",
+                                color: Colors.green,
+                                size: blockWidth * 4,
+                              )
+                            : Container(),
+                        SizedBox(height: blockHeight * 3.5),
+                        (model.isLoading == false)
+                            ? Container()
+                            : CustomLoading(),
+                      ],
                     ),
-                    SizedBox(height: blockHeight * 2.5),
-                    CustomFormField(
-                      hintText: "new password",
-                      isPass: true,
-                      fieldController: model.passController,
-                      prefixIcon: Icons.lock,
-                    ),
-                    SizedBox(height: blockHeight * 2.5),
-                    CustomFormField(
-                      hintText: "confirm new password",
-                      isPass: true,
-                      fieldController: model.confirmPassController,
-                      prefixIcon: Icons.lock,
-                    ),
-                    SizedBox(height: blockHeight * 2.5),
-                    CustomButton(
-                      width: blockWidth * 60,
-                      height: blockHeight * 6,
-                      title: "Change Password",
-                      bgColor: Colors.blue[800],
-                      textColor: Colors.white,
-                      callback: () {
-                        model.onClickChangePassword();
-                      },
-                    ),
-                    SizedBox(height: blockHeight * 1.5),
-                    (model.isError == true)
-                        ? CustomText(
-                            text: model.error,
-                            color: Colors.red,
-                            size: blockWidth * 4,
-                          )
-                        : Container(),
-                    (model.isSuccess == true)
-                        ? CustomText(
-                            text: "Successfully changed password",
-                            color: Colors.green,
-                            size: blockWidth * 4,
-                          )
-                        : Container(),
-                    SizedBox(height: blockHeight * 3.5),
-                    (model.isLoading == false) ? Container() : CustomLoading(),
-                  ],
+                  ),
                 ),
               ),
             ),
