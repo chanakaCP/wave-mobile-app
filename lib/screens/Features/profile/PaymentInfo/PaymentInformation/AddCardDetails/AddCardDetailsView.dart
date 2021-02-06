@@ -7,7 +7,7 @@ import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'AddCardDetailsViewModel.dart';
 
 // ignore: must_be_immutable
-class AddCardDetailsView extends StatelessWidget {
+class AddCardDetails extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
   @override
@@ -15,43 +15,33 @@ class AddCardDetailsView extends StatelessWidget {
     return ViewModelBuilder<AddCardDetailsViewModel>.reactive(
       viewModelBuilder: () => AddCardDetailsViewModel(),
       builder: (_, model, child) {
-        return Scaffold(
-          body: SafeArea(
-            child: AnimatedContainer(
-              padding: EdgeInsets.symmetric(
-                vertical: blockHeight * 7.5,
-                horizontal: blockWidth * 2,
-              ),
-              duration: Duration(milliseconds: 300),
-              child: Stack(children: [
-                CreditCardInputForm(
-                  showResetButton: true,
-                  onStateChange: (currentState, cardInfo) {
-                    if (currentState == InputState.DONE) {
-                      model.card.cardNumber = cardInfo.cardNumber;
-                      model.card.name = cardInfo.name;
-                      model.card.validate = cardInfo.validate;
-                      model.card.cvv = cardInfo.cvv;
-
-                      model.onClickDone();
-                    }
-                  },
-                  // customCaptions: customCaptions,
-                  // cardCVV: '222',
-                  // cardName: 'Jeongtae Kim',
-                  // cardNumber: '1111111111111111',
-                  // cardValid: '12/12',
-                  // intialCardState: InputState.DONE,
-                  // frontCardDecoration: cardDecoration,
-                  // backCardDecoration: cardDecoration,
-                  // prevButtonStyle: buttonStyle,
-                  // nextButtonStyle: buttonStyle,
-                  // prevButtonTextStyle: buttonTextStyle,
-                  // nextButtonTextStyle: buttonTextStyle,
-                  // resetButtonTextStyle: buttonTextStyle,
-                ),
-              ]),
+        return Container(
+          color: Colors.black12,
+          height: blockHeight * 60,
+          child: AnimatedContainer(
+            padding: EdgeInsets.symmetric(
+              vertical: blockHeight * 7.5,
+              horizontal: blockWidth * 2,
             ),
+            duration: Duration(milliseconds: 300),
+            child: Stack(children: [
+              CreditCardInputForm(
+                showResetButton: true,
+                nextButtonDecoration: model.buttonStyle,
+                prevButtonDecoration: model.buttonStyle,
+                resetButtonDecoration: model.buttonStyle,
+                onStateChange: (currentState, cardInfo) {
+                  if (currentState == InputState.DONE) {
+                    model.card.cardNumber = cardInfo.cardNumber;
+                    model.card.name = cardInfo.name;
+                    model.card.validate = cardInfo.validate;
+                    model.card.cvv = cardInfo.cvv;
+
+                    model.onClickDone();
+                  }
+                },
+              ),
+            ]),
           ),
         );
       },

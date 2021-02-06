@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../../../../../Shared/SizeConfig.dart';
-import '../../../../../CustomWidgets/CustomLoading.dart';
-import '../../../../../CustomWidgets/CustomNotificationCard.dart';
+import 'package:wave_mobile_app/Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomNotificationCard.dart';
 import 'MyCardDetailsViewModel.dart';
 
 // ignore: must_be_immutable

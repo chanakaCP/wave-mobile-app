@@ -29,12 +29,13 @@ dependencies:
   provider: ^4.3.2+3
   firebase_core : ^0.5.0
   firebase_auth: ^0.18.4
-  cloud_firestore: ^0.14.4
   firebase_storage: ^4.0.1
+  cloud_firestore: ^0.14.4
   file_picker: 1.4.3+1
   credit_card_input_form: ^2.1.6
   flip_card: ^0.4.4
   awesome_card: ^1.1.0
+  modal_bottom_sheet: ^1.0.0+1
 
 
   # The following adds the Cupertino Icons font to your application.

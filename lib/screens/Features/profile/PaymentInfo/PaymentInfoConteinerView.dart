@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomProfileTabContainer.dart';
-import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/PaymentInformation/PaymentInfo.dart';
+import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/PaymentInformation/PaymentInfoScreenView.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
@@ -26,7 +26,7 @@ class PaymentInfoContainer extends StatelessWidget {
             CustomProfileTabContainer(
               title: "My Business Card",
               callback: () {
-                Get.to(PaymentInfoViewScreen());
+                Get.to(PaymentInfoScreenView());
               },
             ),
             Divider(
