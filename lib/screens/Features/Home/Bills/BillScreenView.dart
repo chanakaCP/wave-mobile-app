@@ -35,7 +35,7 @@ class BillScreen extends StatelessWidget {
                               title: topic.title,
                               imageURL: topic.imageURL,
                               callback: () {
-                                print(topic.idetifier + "  Clicked");
+                                Get.to(topic.callback);
                               },
                             ))
                         .toList(),
