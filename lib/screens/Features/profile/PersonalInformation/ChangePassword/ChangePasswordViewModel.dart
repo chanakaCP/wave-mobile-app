@@ -3,6 +3,7 @@ import 'package:wave_mobile_app/Services/AuthService.dart';
 
 class ChangePasswordViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
+
   final formKey = GlobalKey<FormState>();
   final confirmPassController = TextEditingController();
   final passController = TextEditingController();

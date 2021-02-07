@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomButton.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomFormField.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'ChangePasswordViewModel.dart';
 
@@ -22,48 +22,64 @@ class ChangePasswordView extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
+              title: "change password",
               callbackHead: () {
                 Get.back();
               },
               callbackTail: () async {
                 await model.authService.signOut();
               },
-              title: "change password",
               childWidget: SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     vertical: blockHeight * 15,
-                    horizontal: blockWidth * 10,
+                    horizontal: blockWidth * 5,
                   ),
                   child: Form(
                     key: model.formKey,
                     child: Column(
                       children: [
-                        CustomFormField(
-                          hintText: "old password",
-                          isPass: true,
-                          fieldController: model.oldPassController,
-                          prefixIcon: Icons.lock,
-                        ),
-                        SizedBox(height: blockHeight * 2.5),
-                        CustomFormField(
-                          hintText: "new password",
-                          isPass: true,
-                          fieldController: model.passController,
-                          prefixIcon: Icons.lock,
-                        ),
-                        SizedBox(height: blockHeight * 2.5),
-                        CustomFormField(
-                          hintText: "confirm new password",
-                          isPass: true,
-                          fieldController: model.confirmPassController,
-                          prefixIcon: Icons.lock,
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: blockHeight * 2,
+                            horizontal: blockWidth * 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 30,
+                                spreadRadius: 2,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Column(
+                            children: [
+                              CustomRawInputField(
+                                labeText: "Old Password",
+                                isPass: true,
+                                fieldController: model.oldPassController,
+                              ),
+                              SizedBox(height: blockHeight * 2.5),
+                              CustomRawInputField(
+                                labeText: "New Password",
+                                isPass: true,
+                                fieldController: model.passController,
+                              ),
+                              SizedBox(height: blockHeight * 2.5),
+                              CustomRawInputField(
+                                labeText: "Confirm new Password",
+                                isPass: true,
+                                fieldController: model.confirmPassController,
+                              ),
+                              SizedBox(height: blockHeight * 2.5),
+                            ],
+                          ),
                         ),
                         SizedBox(height: blockHeight * 2.5),
                         CustomButton(
-                          width: blockWidth * 45,
-                          height: blockHeight * 5,
-                          fontSize: blockWidth * 4,
                           title: "Change Password",
                           bgColor: Colors.blue[800],
                           textColor: Colors.white,
