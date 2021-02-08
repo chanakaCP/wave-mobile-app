@@ -15,30 +15,53 @@ class DatabaseService {
       await firestoreInstance
           .collection('users')
           .doc(user.uid.toString())
-          .update({
-            'profilePic' : profilePicURL
-          });
+          .update({'profilePic': profilePicURL});
     } catch (e) {
       print("ERROR WHILE UPLOADING DATA : " + e.toString());
     }
   }
 
-  addCardDetails(CardDetails card) async{
+  addCardDetails(CardDetails card) async {
     User user = _auth.currentUser;
     try {
       await firestoreInstance
           .collection('users')
           .doc(user.uid.toString())
           .update({
-            'cardInfo' : FieldValue.arrayUnion([
-          {"cardNumber": card.cardNumber, "name": card.name, "validate": card.validate, "cvv": card.cvv}
+        'cardInfo': FieldValue.arrayUnion([
+          {
+            "cardNumber": card.cardNumber,
+            "name": card.name,
+            "validate": card.validate,
+            "cvv": card.cvv
+          }
         ])
-          });
+      });
     } catch (e) {
       print("ERROR WHILE UPLOADING DATA : " + e.toString());
     }
   }
 
+  delCardDetails(CardDetails card) async {
+    User user = _auth.currentUser;
+    try {
+      await firestoreInstance
+          .collection('users')
+          .doc(user.uid.toString())
+          .update({
+        'cardInfo': FieldValue.arrayRemove([
+          {
+            "cardNumber": card.cardNumber,
+            "name": card.name,
+            "validate": card.validate,
+            "cvv": card.cvv
+          }
+        ])
+      });
+    } catch (e) {
+      print("ERROR WHILE UPLOADING DATA : " + e.toString());
+    }
+  }
 
   Future<String> uploadFile(File file, String filename) async {
     StorageReference storageReference = storageInstance.ref();
@@ -61,7 +84,10 @@ class DatabaseService {
     User user = _auth.currentUser;
     Stream<DocumentSnapshot> snapshot;
     try {
-      snapshot = firestoreInstance.collection("users").doc(user.uid.toString()).snapshots();
+      snapshot = firestoreInstance
+          .collection("users")
+          .doc(user.uid.toString())
+          .snapshots();
       // List<Card>
     } catch (e) {
       print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
@@ -69,5 +95,4 @@ class DatabaseService {
 
     return snapshot;
   }
-
 }
