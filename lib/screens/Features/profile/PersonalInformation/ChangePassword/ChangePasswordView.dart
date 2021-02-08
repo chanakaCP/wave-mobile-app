@@ -31,9 +31,10 @@ class ChangePasswordView extends StatelessWidget {
               },
               childWidget: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                    vertical: blockHeight * 15,
-                    horizontal: blockWidth * 5,
+                  padding: EdgeInsets.only(
+                    top: blockHeight * 12.5,
+                    left: blockWidth * 5,
+                    right: blockWidth * 5,
                   ),
                   child: Form(
                     key: model.formKey,

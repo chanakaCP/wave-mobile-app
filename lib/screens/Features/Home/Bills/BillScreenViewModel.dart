@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/models/Topic.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/ElectriBills/ElectricBillScreenView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/Insurance%20Bills/InsuranceBillScreenView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/Tax%20Bills/TaxBillScreenView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/Telephone%20Bill/PhoneBillScreenView.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/InsuranceBillScreenView.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Bills/TaxBills/TaxBillScreenView.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Bills/TelephoneBill/PhoneCategoryListScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/WaterBIll/WaterBillScreenView.dart';
 
 class BillScreenViewModel extends ChangeNotifier {
@@ -27,7 +27,7 @@ class BillScreenViewModel extends ChangeNotifier {
       title: "Telephone Bill",
       imageURL: "assets/icons/bills/telephone.png",
       idetifier: "phone",
-      callback: PhoneBillScreen(),
+      callback: PhoneCategoryListScreen(),
     ),
     Topic(
       title: "Tax",

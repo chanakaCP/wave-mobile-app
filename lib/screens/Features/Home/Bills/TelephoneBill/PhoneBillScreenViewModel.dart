@@ -4,6 +4,8 @@ import 'package:wave_mobile_app/Services/AuthService.dart';
 class PhoneBillScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
 
+  String serviceProvider;
+
   final formKey = GlobalKey<FormState>();
   final mobileController = TextEditingController();
   final confirmMobileController = TextEditingController();

@@ -60,6 +60,7 @@ flutter:
   assets:
     - assets/
     - assets/logo/
+    - assets/ServiceProviders/
     - assets/icons/
     - assets/icons/bills/
     - assets/icons/media/
