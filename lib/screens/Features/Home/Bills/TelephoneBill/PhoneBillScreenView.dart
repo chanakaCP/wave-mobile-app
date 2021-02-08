@@ -25,7 +25,10 @@ class PhoneBillScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<PhoneBillScreenViewModel>.reactive(
       viewModelBuilder: () => PhoneBillScreenViewModel(),
-      onModelReady: (model) => {model.serviceProvider = this.serviceProvider},
+      onModelReady: (model) => {
+        model.serviceProvider = this.serviceProvider,
+        model.initialise(),
+      },
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
@@ -94,7 +97,8 @@ class PhoneBillScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   CustomRawInputField(
-                                    labeText: "Mobile Number",
+                                    labeText: "Mobile Number   " +
+                                        model.mobileNumberFormat.toString(),
                                     isPass: false,
                                     fieldController: model.mobileController,
                                     inputType: TextInputType.number,
