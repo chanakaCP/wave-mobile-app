@@ -28,7 +28,6 @@ class CustomPageView extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: blockHeight * 2),
             height: blockHeight * 12.5,
-            // color: Colors.amber,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
