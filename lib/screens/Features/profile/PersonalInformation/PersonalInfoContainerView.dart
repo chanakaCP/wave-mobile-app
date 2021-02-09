@@ -47,7 +47,14 @@ class PersonalInfoContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blueGrey[50],
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 30,
+            spreadRadius: 2,
+          )
+        ],
         borderRadius: BorderRadius.all(
           Radius.circular(20.0),
         ),
@@ -71,6 +78,7 @@ class PersonalInfoContainer extends StatelessWidget {
             ),
             Divider(
               height: blockHeight,
+              color: Colors.blue[800],
             ),
             CustomProfileTabContainer(
               title: "Change Password",

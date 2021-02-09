@@ -11,7 +11,14 @@ class AppInfoContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blueGrey[50],
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 30,
+            spreadRadius: 2,
+          )
+        ],
         borderRadius: BorderRadius.all(
           Radius.circular(20.0),
         ),

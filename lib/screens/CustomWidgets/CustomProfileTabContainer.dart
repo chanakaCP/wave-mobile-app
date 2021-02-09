@@ -20,17 +20,15 @@ class CustomProfileTabContainer extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: CustomText(
-                text: title,
-                color: Colors.black,
-                size: blockHeight * 2,
-                weight: FontWeight.w400,
-              ),
+            CustomText(
+              text: title,
+              color: Colors.blue[800],
+              size: blockHeight * 2,
+              weight: FontWeight.w400,
             ),
             IconButton(
               padding: EdgeInsets.only(bottom: blockHeight),
-              color: Colors.black,
+              color: Colors.blue[800],
               icon: Icon(
                 Icons.keyboard_arrow_right,
                 size: blockHeight * 3,
