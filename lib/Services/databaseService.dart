@@ -59,7 +59,7 @@ class DatabaseService {
         ])
       });
     } catch (e) {
-      print("ERROR WHILE UPLOADING DATA : " + e.toString());
+      print("ERROR WHILE DELETING CARD : " + e.toString());
     }
   }
 
@@ -76,7 +76,6 @@ class DatabaseService {
       print("ERROR WHILE UPLOADING DOCUMENT : " + e.toString());
       print("DOCUMENT : " + filename);
     }
-
     return url;
   }
 
