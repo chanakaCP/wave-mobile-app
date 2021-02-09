@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
 
-class WaterBillScreenViewModel extends ChangeNotifier {
+class ElectricityBillScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
 
@@ -13,8 +14,8 @@ class WaterBillScreenViewModel extends ChangeNotifier {
 
   Stream billDataStream;
 
-  String email = "water.board@gmail.com";
-  String contactNumber = "0112123132";
+  String email = "electricity.board@gmail.com";
+  String contactNumber = "0112123123";
   bool hasData = false;
   bool isButtonClicked = false;
   String error = '';
@@ -29,8 +30,8 @@ class WaterBillScreenViewModel extends ChangeNotifier {
   }
 
   getDataStream() {
-    billDataStream =
-        databaseService.getBillDetails("waterBills", billNumberController.text);
+    billDataStream = databaseService.getBillDetails(
+        "electricityBills", billNumberController.text);
     return billDataStream;
   }
 

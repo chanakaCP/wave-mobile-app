@@ -10,22 +10,22 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRichText.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/WaterBIll/WaterBillScreenViewModel.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Bills/ElectriBills/ElectricityBillScreenViewModel.dart';
 
 // ignore: must_be_immutable
-class WaterBillScreen extends StatelessWidget {
+class ElectricityBillScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
-
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<WaterBillScreenViewModel>.reactive(
-      viewModelBuilder: () => WaterBillScreenViewModel(),
+    return ViewModelBuilder<ElectricityBillScreenViewModel>.reactive(
+      viewModelBuilder: () => ElectricityBillScreenViewModel(),
+      onModelReady: (model) => {model.initialise()},
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Water Bill",
+              title: "Electricity Bill",
               callbackHead: () {
                 Get.back();
               },
