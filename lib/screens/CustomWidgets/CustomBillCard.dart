@@ -6,7 +6,6 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 // ignore: must_be_immutable
 class CustomBillCard extends StatelessWidget {
   String title, imageURL;
-  // Widget callbackWidget;
   final VoidCallback callback;
 
   CustomBillCard(
@@ -19,7 +18,7 @@ class CustomBillCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        height: blockHeight * 10,
+        height: blockHeight * 12.5,
         margin: EdgeInsets.only(
           left: blockWidth * 7.5,
           right: blockWidth * 7.5,
@@ -47,15 +46,14 @@ class CustomBillCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
                 imageURL,
-                height: blockHeight * 7.5,
-                width: blockWidth * 12.5,
-                fit: BoxFit.fill,
+                width: blockWidth * 15,
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(width: blockWidth * 2),
             VerticalDivider(
-              endIndent: 2.5,
-              indent: 2.5,
+              endIndent: 7.5,
+              indent: 7.5,
               thickness: 1,
               color: Colors.blue[400],
             ),
@@ -69,7 +67,6 @@ class CustomBillCard extends StatelessWidget {
             CustomIconButton(
               icon: Icons.arrow_forward_ios_outlined,
               callback: () {
-                // Get.to(callbackWidget);
                 callback();
               },
             )
@@ -78,7 +75,6 @@ class CustomBillCard extends StatelessWidget {
       ),
       onTap: () {
         callback();
-        // Get.to(callbackWidget);
       },
     );
   }

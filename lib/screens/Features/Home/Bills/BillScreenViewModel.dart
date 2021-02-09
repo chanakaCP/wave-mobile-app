@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/models/Topic.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/ElectriBills/ElectricBillScreenView.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Bills/ElectriBills/ElectricityBillScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/InsuranceBillScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/TaxBills/TaxBillScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/TelephoneBill/PhoneCategoryListScreenView.dart';
@@ -15,7 +15,7 @@ class BillScreenViewModel extends ChangeNotifier {
       title: "Electricity Bill",
       imageURL: "assets/icons/bills/electricity.png",
       idetifier: "electricity",
-      callback: ElectricBillScreen(),
+      callback: ElectricityBillScreen(),
     ),
     Topic(
       title: "Water Bill",

@@ -95,4 +95,15 @@ class DatabaseService {
 
     return snapshot;
   }
+
+  Stream<dynamic> getBillDetails(String billType, String billNumber) {
+    Stream<DocumentSnapshot> snapshot;
+    try {
+      snapshot =
+          firestoreInstance.collection(billType).doc(billNumber).snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+    }
+    return snapshot;
+  }
 }
