@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/Insurance%20Bills/InsuranceBillScreenViewModel.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/InsuranceBillScreenViewModel.dart';
 
 class InsuranceBillScreen extends StatelessWidget {
   @override
