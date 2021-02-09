@@ -22,7 +22,7 @@ class PersonalInfoContainer extends StatelessWidget {
 
   onClickUpload() async {
     profilePicURL = await dbService.uploadFile(profilePic, profilePicName);
-    print(profilePicURL.toString());
+    print("profile URL" + profilePicURL.toString());
     if (profilePicURL != null) {
       try {
         dbService.changeProfilePic(profilePicURL);
@@ -36,10 +36,10 @@ class PersonalInfoContainer extends StatelessWidget {
     try {
       profilePic = await FilePicker.getFile(type: FileType.IMAGE);
       profilePicName = path.basename(profilePic.path);
-      print(profilePicName);
+      // print("local path" + profilePicName);
       onClickUpload();
     } on PlatformException catch (e) {
-      print("ERROR WHILE PICKING DOCUMENT : " + e.toString());
+      print("ERROR WHILE PICKING DOCUMENT :" + e.toString());
     }
   }
 
@@ -60,6 +60,7 @@ class PersonalInfoContainer extends StatelessWidget {
                 height: blockWidth * 30,
                 alignment: Alignment(0.0, -20.0),
                 child: CircleAvatar(
+                  // backgroundImage: NetworkImage("https://drive.google.com/file/d/1Ulwa3Z3RZ7OLCgARnrIrHyY1L53Z0scz/view?usp=sharing"),
                   backgroundColor: Colors.blueGrey[100],
                   radius: 60.0,
                 ),

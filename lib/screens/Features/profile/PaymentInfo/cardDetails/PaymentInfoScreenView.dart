@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wave_mobile_app/Services/AuthService.dart';
-import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
-import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/PaymentInformation/AddCardDetails/AddCardDetailsView.dart';
+
+import '../../../../../Services/AuthService.dart';
+import '../../../../../Shared/SizeConfig.dart';
+import '../../../../CustomWidgets/CustomPageView.dart';
+import 'AddCardDetails/AddCardDetailsView.dart';
 import 'MyCardDetails/MyCardDetailesView.dart';
 
 class PaymentInfoScreenView extends StatefulWidget {
