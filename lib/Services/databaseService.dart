@@ -94,4 +94,17 @@ class DatabaseService {
 
     return snapshot;
   }
+
+  Stream<dynamic> getPaymentHistory(){
+    User user = _auth.currentUser;
+    Stream<DocumentSnapshot> snapshot;
+
+    try{
+      snapshot = firestoreInstance.collection("payments").doc(user.uid.toString()).snapshots();
+    } catch(e) {
+      print("ERROR WHILE GETTING PAYAMENT DETAILS :" + e.toString());
+    }
+
+    return snapshot;
+  }
 }

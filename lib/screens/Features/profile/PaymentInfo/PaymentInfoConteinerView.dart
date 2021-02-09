@@ -37,7 +37,7 @@ class PaymentInfoContainer extends StatelessWidget {
             CustomProfileTabContainer(
               title: "Payment Details",
               callback: () {
-                Get.to(paymentHistory());
+                Get.to(PaymentHistory());
               },
             ),
           ],
