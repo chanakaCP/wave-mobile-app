@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomProfileTabContainer.dart';
+
+import 'ContactUs/AppInfoView.dart';
 
 // ignore: must_be_immutable
 class AppInfoContainer extends StatelessWidget {
@@ -27,7 +30,9 @@ class AppInfoContainer extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: blockHeight),
         child: Column(
           children: [
-            CustomProfileTabContainer(title: "Contact Us", callback: () {}),
+            CustomProfileTabContainer(title: "Contact Us", callback: () {
+              Get.to(AppInfoView());
+            }),
           ],
         ),
       ),
