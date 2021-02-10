@@ -1,21 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
 
-class ElectricityBillScreenViewModel extends ChangeNotifier {
+class PoliceStationScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
 
   final formKey = GlobalKey<FormState>();
-  final paymentFormKey = GlobalKey<FormState>();
   final billNumberController = TextEditingController();
-  final amountController = TextEditingController();
 
   Stream billDataStream;
-
-  String email = "electricity.board@gmail.com";
-  String contactNumber = "+94716816135";
+  String email, contactNumber, stationName;
   bool hasData = false;
   bool isButtonClicked = false;
   String error = '';
@@ -30,14 +25,12 @@ class ElectricityBillScreenViewModel extends ChangeNotifier {
   }
 
   getDataStream() {
-    billDataStream = databaseService.getBillDetails(
-        "electricityBills", billNumberController.text);
+    billDataStream =
+        databaseService.getFineDetails(stationName, billNumberController.text);
     return billDataStream;
   }
 
   onClickPay() {
-    if (paymentFormKey.currentState.validate()) {
-      notifyListeners();
-    }
+    notifyListeners();
   }
 }

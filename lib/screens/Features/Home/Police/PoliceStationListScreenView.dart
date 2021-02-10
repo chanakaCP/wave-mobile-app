@@ -6,23 +6,21 @@ import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomNotificationCard.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
-
-import 'paymentHistoryModel.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationListScreenViewModel.dart';
 
 // ignore: must_be_immutable
-class PaymentHistory extends StatelessWidget {
+class PoliceStationListScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
-
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<paymentHistoryModel>.reactive(
-      viewModelBuilder: () => paymentHistoryModel(),
+    return ViewModelBuilder<PoliceStationListScreenView>.reactive(
+      viewModelBuilder: () => PoliceStationListScreenView(),
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Payment History",
+              title: "Police Stations",
               callbackHead: () {
                 Get.back();
               },
@@ -31,38 +29,19 @@ class PaymentHistory extends StatelessWidget {
               },
               childWidget: SingleChildScrollView(
                 child: Container(
-                  height: blockHeight * 86,
-                  padding: EdgeInsets.only(top: blockHeight * 3),
-                  child: StreamBuilder<DocumentSnapshot>(
+                  height: blockHeight * 87.5,
+                  alignment: Alignment.center,
+                  child: StreamBuilder<QuerySnapshot>(
                     stream: model.getDataStream(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return CustomLoading();
                       } else {
-                        if (!snapshot.data.data()["Details"].isEmpty) {
+                        if (snapshot.hasData && snapshot.data.size != 0) {
                           return Container(
                             child: ListView(
                               scrollDirection: Axis.vertical,
-                              children: model.loadHistory(snapshot, context),
-                            ),
-                            margin: EdgeInsets.only(
-                              left: blockWidth * 5,
-                              right: blockWidth * 5,
-                              top: blockWidth * 3,
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: blockWidth,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  blurRadius: 30,
-                                  spreadRadius: 2,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(15.0),
+                              children: model.loadCompanies(snapshot, context),
                             ),
                           );
                         } else {

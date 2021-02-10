@@ -89,19 +89,22 @@ class DatabaseService {
           .snapshots();
       // List<Card>
     } catch (e) {
-      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+      print(" ERROR WHILE GETTING DATA (payments): " + e.toString());
     }
 
     return snapshot;
   }
 
-  Stream<dynamic> getPaymentHistory(){
+  Stream<dynamic> getPaymentHistory() {
     User user = _auth.currentUser;
     Stream<DocumentSnapshot> snapshot;
 
-    try{
-      snapshot = firestoreInstance.collection("payments").doc(user.uid.toString()).snapshots();
-    } catch(e) {
+    try {
+      snapshot = firestoreInstance
+          .collection("payments")
+          .doc(user.uid.toString())
+          .snapshots();
+    } catch (e) {
       print("ERROR WHILE GETTING PAYAMENT DETAILS :" + e.toString());
     }
     return snapshot;
@@ -113,31 +116,57 @@ class DatabaseService {
       snapshot =
           firestoreInstance.collection(billType).doc(billNumber).snapshots();
     } catch (e) {
-      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+      print(" ERROR WHILE GETTING DATA ($billType): " + e.toString());
     }
     return snapshot;
   }
 
   Stream<dynamic> getInsuranceDetails() {
-    
     Stream<QuerySnapshot> snapshot;
     try {
-      snapshot =
-          firestoreInstance.collection("insuranceCompanies").snapshots();
+      snapshot = firestoreInstance.collection("insuranceCompanies").snapshots();
     } catch (e) {
-      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+      print(" ERROR WHILE GETTING DATA (insuranceCompanies): " + e.toString());
     }
     return snapshot;
   }
 
   Stream<dynamic> getInsuranceBillDetails(String company, String billNumber) {
-    
     Stream<DocumentSnapshot> snapshot;
     try {
-      snapshot =
-          firestoreInstance.collection("insuranceCompanies").doc(company).collection("insuranceBills").doc(billNumber).snapshots();
+      snapshot = firestoreInstance
+          .collection("insuranceCompanies")
+          .doc(company)
+          .collection("insuranceBills")
+          .doc(billNumber)
+          .snapshots();
     } catch (e) {
-      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+      print(" ERROR WHILE GETTING DATA (insuranceBill): " + e.toString());
+    }
+    return snapshot;
+  }
+
+  Stream<dynamic> getStationList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("policeStations").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
+
+  Stream<dynamic> getFineDetails(String stationName, String fineId) {
+    Stream<DocumentSnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance
+          .collection("policeStations")
+          .doc(stationName)
+          .collection("trafficFines")
+          .doc(fineId)
+          .snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (trafficFines): " + e.toString());
     }
     return snapshot;
   }

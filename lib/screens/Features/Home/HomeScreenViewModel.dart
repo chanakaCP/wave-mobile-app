@@ -6,7 +6,7 @@ import 'package:wave_mobile_app/screens/Features/Home/Health/HealthScreenView.da
 import 'package:wave_mobile_app/screens/Features/Home/Law/LawScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Media/MediaScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Parliment/ParlimentScreenView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceScreenView.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationListScreenView.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Travel/TravelScreenView.dart';
 
 class HomeScreenViewModel extends ChangeNotifier {
@@ -33,7 +33,7 @@ class HomeScreenViewModel extends ChangeNotifier {
       title: "Police",
       imageURL: "assets/icons/police.png",
       idetifier: "bill",
-      callback: PoliceScreen(),
+      callback: PoliceStationListScreen(),
     ),
     Topic(
       title: "Law and Justies",
