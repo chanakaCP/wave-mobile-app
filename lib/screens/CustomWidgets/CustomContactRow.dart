@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomIconButton.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class CustomContactRow extends StatelessWidget {
@@ -9,6 +10,17 @@ class CustomContactRow extends StatelessWidget {
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
+
+  Future<void> _makePhoneCall() async {
+    String url = 'tel:$contactNumber';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      // todo; call failed error
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +42,7 @@ class CustomContactRow extends StatelessWidget {
           CustomIconButton(
             icon: Icons.call,
             callback: () {
-              print(contactNumber);
+              _makePhoneCall();
             },
           ),
         ],

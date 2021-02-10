@@ -15,7 +15,7 @@ class ElectricityBillScreenViewModel extends ChangeNotifier {
   Stream billDataStream;
 
   String email = "electricity.board@gmail.com";
-  String contactNumber = "0112123123";
+  String contactNumber = "+94716816135";
   bool hasData = false;
   bool isButtonClicked = false;
   String error = '';

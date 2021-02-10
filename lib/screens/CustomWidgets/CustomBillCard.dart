@@ -25,8 +25,8 @@ class CustomBillCard extends StatelessWidget {
       child: Container(
           height: (height != null) ? height : blockHeight * 12.5,
           margin: EdgeInsets.only(
-            left: blockWidth * 7.5,
-            right: blockWidth * 7.5,
+            left: blockWidth * 5,
+            right: blockWidth * 5,
             top: blockWidth * 5,
           ),
           padding: EdgeInsets.symmetric(
