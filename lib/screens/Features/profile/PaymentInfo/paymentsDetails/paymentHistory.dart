@@ -9,7 +9,7 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 
 import 'paymentHistoryModel.dart';
 
-// ignore: camel_case_types
+// ignore: must_be_immutable
 class PaymentHistory extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
