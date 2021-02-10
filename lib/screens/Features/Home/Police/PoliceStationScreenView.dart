@@ -10,28 +10,34 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRichText.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/InsuranceBillScreenViewModel.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationScreenViewModel.dart';
 
 // ignore: must_be_immutable
-class InsuranceBillScreen extends StatelessWidget {
-  final String companyName;
-  InsuranceBillScreen({@required this.companyName});
+class PoliceStationScreen extends StatelessWidget {
+  String stationName, email, contact;
+  PoliceStationScreen(
+      {@required this.stationName,
+      @required this.contact,
+      @required this.email});
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<InsuranceBillScreenViewModel>.reactive(
-      viewModelBuilder: () => InsuranceBillScreenViewModel(),
+    return ViewModelBuilder<PoliceStationScreenViewModel>.reactive(
+      viewModelBuilder: () => PoliceStationScreenViewModel(),
       onModelReady: (model) => {
-        model.companyName = this.companyName,
+        model.stationName = this.stationName,
+        model.email = this.email,
+        model.contactNumber = this.contact,
+        model.initialise(),
       },
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: companyName,
+              title: stationName,
               callbackHead: () {
                 Get.back();
               },
@@ -137,66 +143,71 @@ class InsuranceBillScreen extends StatelessWidget {
                                       ),
                                       child: Column(
                                         children: [
-                                          Form(
-                                            key: model.paymentFormKey,
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: blockHeight * 2,
-                                                horizontal: blockWidth * 5,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.2),
-                                                    blurRadius: 30,
-                                                    spreadRadius: 2,
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                              ),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  CustomRichText(
-                                                    title: "Account Name  :  ",
-                                                    data: snapshot
-                                                        .data["billName"],
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          blockHeight * 0.5),
-                                                  CustomRichText(
-                                                    title: "Bill Number  :  ",
-                                                    data: snapshot
-                                                        .data["billNumber"],
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          blockHeight * 0.5),
-                                                  CustomRichText(
-                                                    title: "Due Amount  :  ",
-                                                    data: snapshot
-                                                        .data["dueAmount"]
-                                                        .toString(),
-                                                  ),
-                                                  SizedBox(height: blockHeight),
-                                                  CustomRawInputField(
-                                                    labeText: "Paying Amount",
-                                                    isPass: false,
-                                                    fieldController:
-                                                        model.amountController,
-                                                    inputType:
-                                                        TextInputType.number,
-                                                  ),
-                                                  SizedBox(
-                                                    height: blockHeight * 2.5,
-                                                  ),
-                                                ],
-                                              ),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                              vertical: blockHeight * 2,
+                                              horizontal: blockWidth * 5,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.2),
+                                                  blurRadius: 30,
+                                                  spreadRadius: 2,
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomRichText(
+                                                  title: "Fine Id  :  ",
+                                                  data: snapshot.data["fineId"],
+                                                ),
+                                                SizedBox(
+                                                    height: blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Offender  :  ",
+                                                  data:
+                                                      snapshot.data["offender"],
+                                                ),
+                                                SizedBox(
+                                                    height: blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Licean Number  :  ",
+                                                  data: snapshot
+                                                      .data["liceanNumber"],
+                                                ),
+                                                SizedBox(
+                                                    height: blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Vehicle Number  :  ",
+                                                  data: snapshot
+                                                      .data["vehicalNumber"],
+                                                ),
+                                                SizedBox(
+                                                    height: blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Violated Rule  :  ",
+                                                  data: snapshot
+                                                      .data["violatedRule"],
+                                                ),
+                                                SizedBox(
+                                                    height: blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Fine  :  ",
+                                                  data: snapshot.data["fine"]
+                                                      .toString(),
+                                                ),
+                                                SizedBox(
+                                                  height: blockHeight * 2.5,
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           SizedBox(height: blockHeight * 2.5),

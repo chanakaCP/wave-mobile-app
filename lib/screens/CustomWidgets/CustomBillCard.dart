@@ -46,22 +46,26 @@ class CustomBillCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             (imageURL != null)
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      imageURL,
-                      width: blockWidth * 15,
-                      fit: BoxFit.contain,
-                    ),
+                ? Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          imageURL,
+                          width: blockWidth * 15,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(width: blockWidth * 2),
+                      VerticalDivider(
+                        endIndent: 7.5,
+                        indent: 7.5,
+                        thickness: 1,
+                        color: Colors.blue[400],
+                      ),
+                    ],
                   )
                 : Container(),
-            SizedBox(width: blockWidth * 2),
-            VerticalDivider(
-              endIndent: 7.5,
-              indent: 7.5,
-              thickness: 1,
-              color: Colors.blue[400],
-            ),
             SizedBox(width: blockWidth * 5),
             Expanded(
               child: CustomText(
