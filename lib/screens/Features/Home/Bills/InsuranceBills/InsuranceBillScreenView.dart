@@ -1,19 +1,35 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
+import 'package:wave_mobile_app/Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomButton.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomIconButton.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomRichText.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/InsuranceBillScreenViewModel.dart';
 
 class InsuranceBillScreen extends StatelessWidget {
+  double blockHeight = SizeConfig.safeBlockVertical;
+  double blockWidth = SizeConfig.safeBlockHorizontal;
+  final String companyName;
+
+  InsuranceBillScreen({@required this.companyName});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<InsuranceBillScreenViewModel>.reactive(
       viewModelBuilder: () => InsuranceBillScreenViewModel(),
+      onModelReady: (model) => {
+        model.companyName = this.companyName,
+      },
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Insurance Bills",
+              title: companyName,
               callbackHead: () {
                 Get.back();
               },
@@ -21,8 +37,192 @@ class InsuranceBillScreen extends StatelessWidget {
                 await model.authService.signOut();
               },
               childWidget: SingleChildScrollView(
-                child: Container(
-                  child: Text("Insurance bill"),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: blockHeight * 5,
+                        left: blockWidth * 5,
+                        right: blockWidth * 5,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CustomIconButton(
+                            icon: Icons.alternate_email_outlined,
+                            callback: () {
+                              print(model.email);
+                            },
+                          ),
+                          SizedBox(width: blockWidth * 5),
+                          CustomIconButton(
+                            icon: Icons.call,
+                            callback: () {
+                              print(model.contactNumber);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: blockHeight * 5,
+                        left: blockWidth * 5,
+                        right: blockWidth * 5,
+                      ),
+                      child: Column(
+                        children: [
+                          Form(
+                            key: model.formKey,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: blockHeight * 2,
+                                horizontal: blockWidth * 5,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    blurRadius: 30,
+                                    spreadRadius: 2,
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  CustomRawInputField(
+                                    labeText: "Bill Number",
+                                    isPass: false,
+                                    fieldController: model.billNumberController,
+                                    inputType: TextInputType.number,
+                                  ),
+                                  SizedBox(height: blockHeight * 2.5),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: blockHeight * 2.5),
+                          CustomButton(
+                            title: "Proceed",
+                            bgColor: Colors.blue[800],
+                            textColor: Colors.white,
+                            callback: () {
+                              model.onClickProceed();
+                            },
+                          ),
+                          SizedBox(height: blockHeight * 2.5),
+                        ],
+                      ),
+                    ),
+                    (model.isButtonClicked == true)
+                        ? Container(
+                            child: StreamBuilder<DocumentSnapshot>(
+                              stream: model.getDataStream(),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return CustomLoading();
+                                } else {
+                                  if (snapshot.hasData &&
+                                      snapshot.data.exists) {
+                                    return Container(
+                                      width: double.infinity,
+                                      padding: EdgeInsets.only(
+                                        left: blockWidth * 5,
+                                        right: blockWidth * 5,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Form(
+                                            key: model.paymentFormKey,
+                                            child: Container(
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: blockHeight * 2,
+                                                horizontal: blockWidth * 5,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.2),
+                                                    blurRadius: 30,
+                                                    spreadRadius: 2,
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
+                                              ),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  CustomRichText(
+                                                    title: "Account Name  :  ",
+                                                    data: snapshot
+                                                        .data["billName"],
+                                                  ),
+                                                  SizedBox(
+                                                      height:
+                                                          blockHeight * 0.5),
+                                                  CustomRichText(
+                                                    title: "Bill Number  :  ",
+                                                    data: snapshot
+                                                        .data["billNumber"],
+                                                  ),
+                                                  SizedBox(
+                                                      height:
+                                                          blockHeight * 0.5),
+                                                  CustomRichText(
+                                                    title: "Due Amount  :  ",
+                                                    data: snapshot
+                                                        .data["dueAmount"]
+                                                        .toString(),
+                                                  ),
+                                                  SizedBox(height: blockHeight),
+                                                  CustomRawInputField(
+                                                    labeText: "Paying Amount",
+                                                    isPass: false,
+                                                    fieldController:
+                                                        model.amountController,
+                                                    inputType:
+                                                        TextInputType.number,
+                                                  ),
+                                                  SizedBox(
+                                                    height: blockHeight * 2.5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: blockHeight * 2.5),
+                                          CustomButton(
+                                            title: "Pay",
+                                            bgColor: Colors.blue[800],
+                                            textColor: Colors.white,
+                                            callback: () {
+                                              model.onClickPay();
+                                            },
+                                          ),
+                                          SizedBox(height: blockHeight * 2.5),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    return CustomText(
+                                      text: "Invalid bill number",
+                                      color: Colors.red,
+                                      size: blockWidth * 4,
+                                    );
+                                  }
+                                }
+                              },
+                            ),
+                          )
+                        : Container(),
+                  ],
                 ),
               ),
             ),

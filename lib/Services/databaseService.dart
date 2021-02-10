@@ -117,4 +117,28 @@ class DatabaseService {
     }
     return snapshot;
   }
+
+  Stream<dynamic> getInsuranceDetails() {
+    
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot =
+          firestoreInstance.collection("insuranceCompanies").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+    }
+    return snapshot;
+  }
+
+  Stream<dynamic> getInsuranceBillDetails(String company, String billNumber) {
+    
+    Stream<DocumentSnapshot> snapshot;
+    try {
+      snapshot =
+          firestoreInstance.collection("insuranceCompanies").doc(company).collection("insuranceBills").doc(billNumber).snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (SUBJECTS): " + e.toString());
+    }
+    return snapshot;
+  }
 }

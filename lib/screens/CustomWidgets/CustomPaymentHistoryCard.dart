@@ -15,7 +15,6 @@ class CustomPaymentHistoryCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          // height: blockHeight * 11,
           margin: EdgeInsets.only(
             left: blockWidth * 3,
             right: blockWidth * 3,
