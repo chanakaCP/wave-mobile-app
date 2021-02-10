@@ -12,6 +12,7 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomRichText.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/TaxBills/TaxBillScreenViewModel.dart';
 
+// ignore: must_be_immutable
 class TaxBillScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;

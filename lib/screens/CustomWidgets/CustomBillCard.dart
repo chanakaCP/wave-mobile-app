@@ -5,11 +5,14 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
 class CustomBillCard extends StatelessWidget {
-  String title, imageURL;
+  String title, subTitle, imageURL;
   final VoidCallback callback;
 
   CustomBillCard(
-      {@required this.title, @required this.imageURL, @required this.callback});
+      {@required this.title,
+      this.subTitle,
+      this.imageURL,
+      @required this.callback});
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -42,14 +45,16 @@ class CustomBillCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                imageURL,
-                width: blockWidth * 15,
-                fit: BoxFit.contain,
-              ),
-            ),
+            (imageURL != null)
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      imageURL,
+                      width: blockWidth * 15,
+                      fit: BoxFit.contain,
+                    ),
+                  )
+                : Container(),
             SizedBox(width: blockWidth * 2),
             VerticalDivider(
               endIndent: 7.5,

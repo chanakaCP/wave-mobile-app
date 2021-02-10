@@ -13,7 +13,7 @@ class TaxBillScreenViewModel extends ChangeNotifier {
 
   Stream billDataStream;
 
-  String email = "electricity.board@gmail.com";
+  String email = "tax@gmail.com";
   String contactNumber = "0112123123";
   bool hasData = false;
   bool isButtonClicked = false;
@@ -29,8 +29,8 @@ class TaxBillScreenViewModel extends ChangeNotifier {
   }
 
   getDataStream() {
-    billDataStream = databaseService.getBillDetails(
-        "taxBills", billNumberController.text);
+    billDataStream =
+        databaseService.getBillDetails("taxBills", billNumberController.text);
     return billDataStream;
   }
 

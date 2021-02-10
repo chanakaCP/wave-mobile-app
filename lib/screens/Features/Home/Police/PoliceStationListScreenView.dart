@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomCardItem.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceScreenViewModel.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationListScreenViewModel.dart';
 
 // ignore: must_be_immutable
-class PoliceScreen extends StatelessWidget {
+class PoliceStationListScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<PoliceScreenViewModel>.reactive(
-      viewModelBuilder: () => PoliceScreenViewModel(),
+    return ViewModelBuilder<PoliceStationListScreenView>.reactive(
+      viewModelBuilder: () => PoliceStationListScreenView(),
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Police",
+              title: "Police Stations",
               callbackHead: () {
                 Get.back();
               },
@@ -27,18 +26,11 @@ class PoliceScreen extends StatelessWidget {
               },
               childWidget: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.only(top: blockHeight * 2),
+                  height: blockHeight * 87.5,
                   alignment: Alignment.center,
-                  child: Wrap(
-                    children: model.topics
-                        .map((topic) => CustomCardItem(
-                              title: topic.title,
-                              imageURL: topic.imageURL,
-                              callback: () {
-                                print(topic.idetifier + "  Clicked");
-                              },
-                            ))
-                        .toList(),
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    // children: model.loadCard(),
                   ),
                 ),
               ),
