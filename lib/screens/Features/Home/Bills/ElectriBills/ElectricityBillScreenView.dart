@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomButton.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomIconButton.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomContactRow.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
@@ -35,30 +35,9 @@ class ElectricityBillScreen extends StatelessWidget {
               childWidget: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(
-                        top: blockHeight * 5,
-                        left: blockWidth * 5,
-                        right: blockWidth * 5,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomIconButton(
-                            icon: Icons.alternate_email_outlined,
-                            callback: () {
-                              print(model.email);
-                            },
-                          ),
-                          SizedBox(width: blockWidth * 5),
-                          CustomIconButton(
-                            icon: Icons.call,
-                            callback: () {
-                              print(model.contactNumber);
-                            },
-                          ),
-                        ],
-                      ),
+                    CustomContactRow(
+                      email: model.email,
+                      contactNumber: model.contactNumber,
                     ),
                     Container(
                       padding: EdgeInsets.only(
