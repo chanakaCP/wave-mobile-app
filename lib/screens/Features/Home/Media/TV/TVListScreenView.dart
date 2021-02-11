@@ -6,21 +6,21 @@ import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomNotificationCard.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationListScreenViewModel.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Media/TV/TVListScreenViewModel.dart';
 
 // ignore: must_be_immutable
-class PoliceStationListScreen extends StatelessWidget {
+class TVListScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<PoliceStationListScreenViewModel>.reactive(
-      viewModelBuilder: () => PoliceStationListScreenViewModel(),
+    return ViewModelBuilder<TVListScreenViewModel>.reactive(
+      viewModelBuilder: () => TVListScreenViewModel(),
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Police Stations",
+              title: "TV Channels",
               callbackHead: () {
                 Get.back();
               },

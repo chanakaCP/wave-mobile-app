@@ -18,7 +18,7 @@ class MediaScreen extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Media ",
+              title: "Media",
               callbackHead: () {
                 Get.back();
               },
@@ -35,7 +35,7 @@ class MediaScreen extends StatelessWidget {
                               title: topic.title,
                               imageURL: topic.imageURL,
                               callback: () {
-                                print(topic.idetifier + "  Clicked");
+                                Get.to(topic.callback);
                               },
                             ))
                         .toList(),
