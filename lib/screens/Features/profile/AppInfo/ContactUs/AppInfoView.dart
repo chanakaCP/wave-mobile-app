@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/screens/Features/profile/AppInfo/CustomWidget/CustomContainer.dart';
-import '../../../../CustomWidgets/CustomIconButton.dart';
-import '../../../../CustomWidgets/CustomText.dart';
 import '../../../../../Shared/SizeConfig.dart';
 import '../../../../CustomWidgets/CustomPageView.dart';
 import 'AppInfoViewModel.dart';
@@ -13,7 +11,7 @@ class AppInfoView extends StatelessWidget {
   double blockWidth = SizeConfig.safeBlockHorizontal;
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder.reactive(
+    return ViewModelBuilder<AppInfoViewModel>.reactive(
       viewModelBuilder: () => AppInfoViewModel(),
       builder: (_, model, child) {
         return SafeArea(
@@ -33,9 +31,12 @@ class AppInfoView extends StatelessWidget {
                       margin: EdgeInsets.symmetric(
                           vertical: blockHeight * 5,
                           horizontal: blockWidth * 5),
-                      padding: EdgeInsets.symmetric(
-                          vertical: blockHeight * 5,
-                          horizontal: blockWidth * 5),
+                      padding: EdgeInsets.only(
+                        right: blockWidth * 5,
+                        left: blockWidth * 5,
+                        top: blockHeight * 5,
+                        bottom: blockHeight
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -52,35 +53,43 @@ class AppInfoView extends StatelessWidget {
                         children: [
                           CustomContainer(
                             title: "City :",
-                            name: "Thanamalwila",
+                            name: model.city,
                           ),
                           CustomContainer(
                             title: "Address :",
-                            name: "Thanamalwila",
+                            name: model.address,
                           ),
                           CustomContainer(
                             title: "Phone :",
-                            name: "(+94) 71 6816135",
+                            name: model.phoneNum,
                             icon: Icons.call,
-                            callback: () {},
+                            callback: () {
+                              model.makePhoneCall();
+                            },
                           ),
                           CustomContainer(
                             title: "Email :",
-                            name: "shan@xdoto.io",
+                            name: model.email,
                             icon: Icons.alternate_email_outlined,
-                            callback: () {},
+                            callback: () {
+                              model.sendMail();
+                            },
                           ),
                           CustomContainer(
                             title: "Web :",
-                            name: "shan.xdoto.io",
+                            name: model.webName,
                             icon: Icons.web_asset_rounded,
-                            callback: () {},
+                            callback: () {
+                              model.launchInBrowser(model.webURL);
+                            },
                           ),
                           CustomContainer(
                             title: "Facebook :",
-                            name: "shan Manage",
+                            name: model.fbName,
                             icon: Icons.link,
-                            callback: () {},
+                            callback: () {
+                              model.launchInBrowser(model.fbURL);
+                            },
                           ),
                         ],
                       ),

@@ -20,6 +20,15 @@ class CustomContactRow extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
+  Future<void> _sendMail() async {
+    String url = 'mailto:$email';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      // todo; call failed error
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +44,7 @@ class CustomContactRow extends StatelessWidget {
           CustomIconButton(
             icon: Icons.alternate_email_outlined,
             callback: () {
-              print(email);
+              _sendMail();
             },
           ),
           SizedBox(width: blockWidth * 5),

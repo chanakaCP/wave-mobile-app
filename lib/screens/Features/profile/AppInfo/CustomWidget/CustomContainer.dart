@@ -54,7 +54,6 @@ class CustomContainer extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: blockHeight * 2),
             child: Divider(
-              thickness: blockHeight * 0.2,
               height: blockHeight * 2,
               color: Colors.blue[600],
             ),
