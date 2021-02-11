@@ -50,8 +50,8 @@ class PersonalInfoContainer extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 30,
+            color: Colors.blueGrey.withOpacity(0.2),
+            blurRadius: 20,
             spreadRadius: 2,
           )
         ],
@@ -64,8 +64,8 @@ class PersonalInfoContainer extends StatelessWidget {
           children: [
             InkWell(
               child: Container(
-                height: blockWidth * 30,
-                alignment: Alignment(0.0, -20.0),
+                height: blockHeight * 15,
+                alignment: Alignment(0.0, -10.0),
                 child: CircleAvatar(
                   // backgroundImage: NetworkImage("https://drive.google.com/file/d/1Ulwa3Z3RZ7OLCgARnrIrHyY1L53Z0scz/view?usp=sharing"),
                   backgroundColor: Colors.blueGrey[100],

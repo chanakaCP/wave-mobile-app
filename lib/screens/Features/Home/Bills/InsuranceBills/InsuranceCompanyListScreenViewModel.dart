@@ -24,7 +24,11 @@ class InsuranceCompanyListScreenModel extends ChangeNotifier {
             title: doc["name"],
             imageURL: "assets/ServiceProviders/mobitel.png",
             callback: () {
-              Get.to(InsuranceBillScreen(companyName: doc["name"],));
+              Get.to(InsuranceBillScreen(
+                companyName: doc["name"],
+                contactNumber: doc["contactNumber"],
+                email: doc["email"],
+              ));
             },
           ),
         )

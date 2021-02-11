@@ -33,18 +33,18 @@ class CustomPaymentHistoryCard extends StatelessWidget {
                 children: [
                   CustomText(
                     text: payment.type,
-                    color: Colors.blue[600],
+                    color: Colors.blue[800],
                     size: blockHeight * 2.5,
                   ),
                   CustomText(
                     text: "Bill No : " + payment.billNo,
-                    color: Colors.blue[500],
+                    color: Colors.blue[700],
                     size: blockHeight * 2,
                   ),
                   Text(
                     payment.date.toDate().toString(),
                     style: TextStyle(
-                      color: Colors.blue[500],
+                      color: Colors.blue[700],
                     ),
                   )
                 ],
