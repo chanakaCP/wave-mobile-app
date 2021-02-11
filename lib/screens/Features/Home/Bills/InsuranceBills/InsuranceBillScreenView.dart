@@ -14,8 +14,12 @@ import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/Insur
 
 // ignore: must_be_immutable
 class InsuranceBillScreen extends StatelessWidget {
-  final String companyName;
-  InsuranceBillScreen({@required this.companyName});
+  final String companyName, contactNumber, email;
+  InsuranceBillScreen({
+    @required this.companyName,
+    @required this.contactNumber,
+    @required this.email,
+  });
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -26,6 +30,8 @@ class InsuranceBillScreen extends StatelessWidget {
       viewModelBuilder: () => InsuranceBillScreenViewModel(),
       onModelReady: (model) => {
         model.companyName = this.companyName,
+        model.contactNumber = this.contactNumber,
+        model.email = this.email,
       },
       builder: (_, model, child) {
         return SafeArea(

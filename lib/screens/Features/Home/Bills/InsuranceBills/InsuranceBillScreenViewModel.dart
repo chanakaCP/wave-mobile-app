@@ -5,7 +5,7 @@ import 'package:wave_mobile_app/Services/databaseService.dart';
 class InsuranceBillScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
-  String companyName;
+  String companyName, contactNumber, email;
 
   final formKey = GlobalKey<FormState>();
   final paymentFormKey = GlobalKey<FormState>();
@@ -14,8 +14,6 @@ class InsuranceBillScreenViewModel extends ChangeNotifier {
 
   Stream billDataStream;
 
-  String email = "electricity.board@gmail.com";
-  String contactNumber = "0112123123";
   bool hasData = false;
   bool isButtonClicked = false;
   String error = '';
