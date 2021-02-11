@@ -7,14 +7,16 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
 class CustomExpandedCard extends StatelessWidget {
-  String title, tailingText, imageURL, email, contactNumber;
+  String title, tailingText, imageURL, email, contactNumber, facebook, web;
 
   CustomExpandedCard(
       {@required this.title,
       this.tailingText,
       this.imageURL,
       this.email,
-      this.contactNumber});
+      this.contactNumber,
+      this.facebook,
+      this.web});
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -29,7 +31,6 @@ class CustomExpandedCard extends StatelessWidget {
       builder: (_, model, child) {
         return InkWell(
           child: Container(
-              // height: blockHeight * 12.5,
               margin: EdgeInsets.only(
                 left: blockWidth * 5,
                 right: blockWidth * 5,
@@ -84,8 +85,30 @@ class CustomExpandedCard extends StatelessWidget {
                     ],
                   ),
                   (model.isExpand == true)
-                      ? CustomContactRow(
-                          email: "email", contactNumber: "0779232611")
+                      ? SizedBox(height: blockHeight * 2)
+                      : Container(),
+                  (model.isExpand == true)
+                      ? Divider(
+                          thickness: 0.5,
+                          color: Colors.blue[900],
+                        )
+                      : Container(),
+                  (model.isExpand == true)
+                      ? (email == null &&
+                              web == null &&
+                              contactNumber == null &&
+                              facebook == null)
+                          ? CustomText(
+                              text: "No contct detaile found",
+                              color: Colors.red,
+                              size: blockWidth * 4,
+                            )
+                          : CustomContactRow(
+                              email: email,
+                              contactNumber: contactNumber,
+                              facebook: facebook,
+                              web: web,
+                            )
                       : Container(),
                 ],
               )),
