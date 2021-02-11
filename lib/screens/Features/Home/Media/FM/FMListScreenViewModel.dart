@@ -7,7 +7,7 @@ import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomBillCard.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationScreenView.dart';
 
-class PoliceStationListScreenViewModel extends ChangeNotifier {
+class FMListScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
   Stream insuranceDataStream;

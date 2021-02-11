@@ -5,36 +5,28 @@ import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomBillCard.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Police/PoliceStationScreenView.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomExpandedCard/CustomExpandedCardView.dart';
 
-class PoliceStationListScreenViewModel extends ChangeNotifier {
+class TVListScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
-  Stream insuranceDataStream;
+
+  Stream tvDataStream;
 
   double blockHeight = SizeConfig.safeBlockVertical;
 
   getDataStream() {
-    insuranceDataStream = databaseService.getStationList();
-    return insuranceDataStream;
+    tvDataStream = databaseService.getMediaList("tvChannels");
+    return tvDataStream;
   }
 
   loadCompanies(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
     return snapshot.data.docs
-        .map(
-          (doc) => CustomBillCard(
-            height: blockHeight * 10,
-            title: doc["station"],
-            subTitle: doc["stationId"],
-            callback: () {
-              Get.to(PoliceStationScreen(
-                stationName: doc["station"],
-                contact: doc["contactNumber"],
-                email: doc["email"],
-              ));
-            },
-          ),
-        )
+        .map((doc) => CustomExpandedCard(
+              title: doc["channel"],
+              tailingText: doc["channelId"],
+              imageURL: "assets/logo/tv_sirasa.jpg",
+            ))
         .toList();
   }
 }

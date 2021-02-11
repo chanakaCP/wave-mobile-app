@@ -170,4 +170,14 @@ class DatabaseService {
     }
     return snapshot;
   }
+
+  Stream<dynamic> getMediaList(String mediaType) {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection(mediaType).snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
 }

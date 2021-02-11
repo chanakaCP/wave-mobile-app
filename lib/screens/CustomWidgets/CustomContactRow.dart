@@ -5,8 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class CustomContactRow extends StatelessWidget {
-  String email, contactNumber;
-  CustomContactRow({@required this.email, @required this.contactNumber});
+  String email, contactNumber, facebook, web;
+  CustomContactRow({this.email, this.contactNumber, this.facebook, this.web});
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -32,19 +32,34 @@ class CustomContactRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          CustomIconButton(
-            icon: Icons.alternate_email_outlined,
-            callback: () {
-              print(email);
-            },
-          ),
+          (this.web != null)
+              ? CustomIconButton(
+                  icon: Icons.web,
+                  callback: () {},
+                )
+              : Container(),
           SizedBox(width: blockWidth * 5),
-          CustomIconButton(
-            icon: Icons.call,
-            callback: () {
-              _makePhoneCall();
-            },
-          ),
+          (this.facebook != null)
+              ? CustomIconButton(
+                  icon: Icons.link,
+                  callback: () {},
+                )
+              : Container(),
+          (this.email != null)
+              ? CustomIconButton(
+                  icon: Icons.alternate_email_outlined,
+                  callback: () {},
+                )
+              : Container(),
+          SizedBox(width: blockWidth * 5),
+          (this.contactNumber != null)
+              ? CustomIconButton(
+                  icon: Icons.call,
+                  callback: () {
+                    _makePhoneCall();
+                  },
+                )
+              : Container(),
         ],
       ),
     );
