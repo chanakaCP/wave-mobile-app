@@ -20,7 +20,7 @@ class FMListScreen extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "TV Channels",
+              title: "FM Channels",
               callbackHead: () {
                 Get.back();
               },

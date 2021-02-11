@@ -26,6 +26,10 @@ class TVListScreenViewModel extends ChangeNotifier {
               title: doc["channel"],
               tailingText: doc["channelId"],
               imageURL: "assets/logo/tv_sirasa.jpg",
+              email: doc["email"],
+              contactNumber: doc["contactNumber"],
+              facebook: doc["facebookURL"],
+              web: doc["webURL"],
             ))
         .toList();
   }

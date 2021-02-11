@@ -6,7 +6,13 @@ import 'package:url_launcher/url_launcher.dart';
 // ignore: must_be_immutable
 class CustomContactRow extends StatelessWidget {
   String email, contactNumber, facebook, web;
-  CustomContactRow({this.email, this.contactNumber, this.facebook, this.web});
+  bool isOnExpand;
+  CustomContactRow(
+      {this.email,
+      this.contactNumber,
+      this.facebook,
+      this.web,
+      this.isOnExpand});
 
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -35,26 +41,34 @@ class CustomContactRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        top: blockHeight * 5,
+        top: (isOnExpand == false || isOnExpand == null)
+            ? blockHeight * 2
+            : blockHeight * 5,
         left: blockWidth * 5,
-        right: blockWidth * 5,
+        right: (isOnExpand == false || isOnExpand == null)
+            ? blockWidth * 2.5
+            : blockWidth * 5,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          (this.web != null) ? SizedBox(width: blockWidth * 5) : Container(),
           (this.web != null)
               ? CustomIconButton(
                   icon: Icons.web,
                   callback: () {},
                 )
               : Container(),
-          SizedBox(width: blockWidth * 5),
+          (this.facebook != null)
+              ? SizedBox(width: blockWidth * 5)
+              : Container(),
           (this.facebook != null)
               ? CustomIconButton(
                   icon: Icons.link,
                   callback: () {},
                 )
               : Container(),
+          (this.email != null) ? SizedBox(width: blockWidth * 5) : Container(),
           (this.email != null)
               ? CustomIconButton(
                   icon: Icons.alternate_email_outlined,
@@ -63,7 +77,9 @@ class CustomContactRow extends StatelessWidget {
                   },
                 )
               : Container(),
-          SizedBox(width: blockWidth * 5),
+          (this.contactNumber != null)
+              ? SizedBox(width: blockWidth * 5)
+              : Container(),
           (this.contactNumber != null)
               ? CustomIconButton(
                   icon: Icons.call,
