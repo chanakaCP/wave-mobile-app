@@ -2,24 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomContactRow.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomExpandedCard/CustomExpandedCardViewModel.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomParlimentExpandedCard/CustomExpandedCardViewModel.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
-class CustomExpandedCard extends StatelessWidget {
-  String title,
-      subTitle,
-      tailingText,
-      imageURL,
-      email,
-      contactNumber,
-      facebook,
-      web;
+class CustomParlimentExpandedCard extends StatelessWidget {
+  String title, subTitle, imageURL, email, contactNumber, facebook, web;
 
-  CustomExpandedCard(
+  CustomParlimentExpandedCard(
       {@required this.title,
       this.subTitle,
-      this.tailingText,
       this.imageURL,
       this.email,
       this.contactNumber,
@@ -31,8 +23,8 @@ class CustomExpandedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CustomExpandedCardViewModel>.reactive(
-      viewModelBuilder: () => CustomExpandedCardViewModel(),
+    return ViewModelBuilder<CustomParlimentExpandedCardViewModel>.reactive(
+      viewModelBuilder: () => CustomParlimentExpandedCardViewModel(),
       onModelReady: (model) => {
         model.inititalize(),
       },
@@ -61,56 +53,35 @@ class CustomExpandedCard extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  (imageURL != null)
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                imageURL,
-                                width: blockWidth * 15,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            SizedBox(width: blockWidth * 2),
-                            // VerticalDivider(
-                            //   // endIndent: 7.5,
-                            //   // indent: 7.5,
-                            //   thickness: 5,
-                            //   color: Colors.blue[400],
-                            // ),
-                            // SizedBox(width: blockWidth * 5),
-                            Expanded(
-                              child: CustomText(
-                                text: title,
-                                color: Colors.blue[700],
-                              ),
-                            ),
-                            CustomText(
-                              text: tailingText,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          imageURL,
+                          width: blockWidth * 15,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(width: blockWidth * 2),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
+                            text: title,
+                            color: Colors.blue[700],
+                          ),
+                          Text(
+                            subTitle,
+                            style: TextStyle(
                               color: Colors.blue[700],
                             ),
-                          ],
-                        )
-                      : Container(
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                text: title,
-                                color: Colors.blue[700],
-                              ),
-                              Text(
-                                subTitle,
-                                style: TextStyle(
-                                  color: Colors.blue[700],
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
+                        ],
+                      ),
+                    ],
+                  ),
                   (model.isExpand == true)
                       ? SizedBox(height: blockHeight * 2)
                       : Container(),

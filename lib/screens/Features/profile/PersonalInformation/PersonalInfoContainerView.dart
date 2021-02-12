@@ -1,12 +1,15 @@
 import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart' as path;
-import 'package:wave_mobile_app/Services/databaseService.dart';
-import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomProfileTabContainer.dart';
+
+import '../../../../Services/databaseService.dart';
+import '../../../../Shared/SizeConfig.dart';
+import '../../../CustomWidgets/CustomAlertDialog.dart';
+import '../../../CustomWidgets/CustomProfileTabContainer.dart';
 import 'ChangePassword/ChangePasswordView.dart';
 
 // ignore: must_be_immutable
@@ -32,12 +35,29 @@ class PersonalInfoContainer extends StatelessWidget {
     }
   }
 
-  Future pickFile() async {
+  Future pickFile(BuildContext context) async {
     try {
       profilePic = await FilePicker.getFile(type: FileType.IMAGE);
       profilePicName = path.basename(profilePic.path);
       // print("local path" + profilePicName);
-      onClickUpload();
+      if (profilePic != null) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CustomAlertDialog(
+              title: "Warning !",
+              description: "Are you sure you want to change profile pic ?",
+              callbackYes: () {
+                onClickUpload();
+                Get.back();
+              },
+              callbackNo: () {
+                Get.back();
+              },
+            );
+          },
+        );
+      }
     } on PlatformException catch (e) {
       print("ERROR WHILE PICKING DOCUMENT :" + e.toString());
     }
@@ -73,7 +93,7 @@ class PersonalInfoContainer extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                pickFile();
+                pickFile(context);
               },
             ),
             Divider(

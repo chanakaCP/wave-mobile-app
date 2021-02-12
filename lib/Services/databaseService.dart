@@ -180,4 +180,34 @@ class DatabaseService {
     }
     return snapshot;
   }
+
+  Stream<dynamic> getHealthList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("hospital").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
+  
+  Stream<dynamic> getParlimentList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("parliment").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
+  
+  Stream<dynamic> getLawyerstList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("lawyer").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
 }
