@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wave_mobile_app/Services/AuthService.dart';
-import 'package:wave_mobile_app/models/ServiceProvider.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomBillCard.dart';
-import 'package:wave_mobile_app/screens/Features/Home/Bills/TelephoneBill/PhoneBillScreenView.dart';
+
+import '../../../../../Services/AuthService.dart';
+import '../../../../../models/ServiceProvider.dart';
+import '../../../../CustomWidgets/CustomBillCard.dart';
+import 'PhoneBillScreenView.dart';
 
 class PhoneCategoryListScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();

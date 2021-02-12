@@ -19,8 +19,8 @@ class TVListScreenViewModel extends ChangeNotifier {
     return snapshot.data.docs
         .map((doc) => CustomExpandedCard(
               title: doc["channel"],
-              tailingText: doc["channelId"],
-              imageURL: "assets/logo/tv_sirasa.jpg",
+              tailingText: doc["rating"].toString(),
+              imageURL: doc["imageURL"],
               email: doc["email"],
               contactNumber: doc["contactNumber"],
               facebook: doc["facebookURL"],

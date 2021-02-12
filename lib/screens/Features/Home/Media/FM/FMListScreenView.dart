@@ -41,7 +41,7 @@ class FMListScreen extends StatelessWidget {
                           return Container(
                             child: ListView(
                               scrollDirection: Axis.vertical,
-                              children: model.loadCompanies(snapshot, context),
+                              children: model.loadChannels(snapshot, context),
                             ),
                           );
                         } else {
