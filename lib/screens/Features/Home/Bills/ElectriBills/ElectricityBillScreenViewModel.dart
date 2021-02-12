@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wave_mobile_app/Services/AuthService.dart';
-import 'package:wave_mobile_app/Services/databaseService.dart';
+
+import '../../../../../Services/AuthService.dart';
+import '../../../../../Services/databaseService.dart';
 
 class ElectricityBillScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();

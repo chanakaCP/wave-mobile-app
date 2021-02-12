@@ -37,7 +37,7 @@ class SignUpScreenViewModel extends ChangeNotifier {
 
       dynamic result = await authService.registerWithEmailAndPassword(regUser);
       if (result == null) {
-        error = 'User not created..., Please try again';
+        error = 'User not created..., minimum password length';
         isLoading = false;
         isError = true;
         notifyListeners();

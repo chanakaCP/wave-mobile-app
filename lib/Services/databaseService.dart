@@ -146,6 +146,19 @@ class DatabaseService {
     return snapshot;
   }
 
+  Stream<dynamic> getCertificate(String type, String indexNumber, String year) {
+    Stream<DocumentSnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance
+          .collection(type)
+          .doc(year + "-" + indexNumber)
+          .snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (insuranceBill): " + e.toString());
+    }
+    return snapshot;
+  }
+
   Stream<dynamic> getStationList() {
     Stream<QuerySnapshot> snapshot;
     try {

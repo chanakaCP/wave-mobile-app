@@ -22,7 +22,7 @@ class InsuranceCompanyListScreenModel extends ChangeNotifier {
         .map(
           (doc) => CustomBillCard(
             title: doc["name"],
-            imageURL: "assets/ServiceProviders/mobitel.png",
+            imageURL: "assets/logo/insurance.png",
             callback: () {
               Get.to(InsuranceBillScreen(
                 companyName: doc["name"],

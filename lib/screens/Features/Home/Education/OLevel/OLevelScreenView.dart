@@ -11,22 +11,22 @@ import '../../../../CustomWidgets/CustomPageView.dart';
 import '../../../../CustomWidgets/CustomRawInputField.dart';
 import '../../../../CustomWidgets/CustomRichText.dart';
 import '../../../../CustomWidgets/CustomText.dart';
-import 'ElectricityBillScreenViewModel.dart';
+import 'OLevelScreenViewModel.dart';
 
 // ignore: must_be_immutable
-class ElectricityBillScreen extends StatelessWidget {
+class OLevelScreenView extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ElectricityBillScreenViewModel>.reactive(
-      viewModelBuilder: () => ElectricityBillScreenViewModel(),
+    return ViewModelBuilder<OLevelScreenViewModel>.reactive(
+      viewModelBuilder: () => OLevelScreenViewModel(),
       onModelReady: (model) => {model.initialise()},
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
-              title: "Electricity Bill",
+              title: "O/L Certificate",
               callbackHead: () {
                 Get.back();
               },
@@ -69,9 +69,16 @@ class ElectricityBillScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   CustomRawInputField(
-                                    labeText: "Bill Number",
+                                    labeText: "index Number",
                                     isPass: false,
-                                    fieldController: model.billNumberController,
+                                    fieldController: model.indexNumberController,
+                                    inputType: TextInputType.number,
+                                  ),
+                                  SizedBox(height: blockHeight * 2.5),
+                                  CustomRawInputField(
+                                    labeText: "Year",
+                                    isPass: false,
+                                    fieldController: model.yearController,
                                     inputType: TextInputType.number,
                                   ),
                                   SizedBox(height: blockHeight * 2.5),
@@ -111,79 +118,63 @@ class ElectricityBillScreen extends StatelessWidget {
                                       ),
                                       child: Column(
                                         children: [
-                                          Form(
-                                            key: model.paymentFormKey,
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: blockHeight * 2,
-                                                horizontal: blockWidth * 5,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.2),
-                                                    blurRadius: 30,
-                                                    spreadRadius: 2,
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                              ),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  CustomRichText(
-                                                    title: "Account Name  :  ",
-                                                    data: snapshot
-                                                        .data["billName"],
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          blockHeight * 0.5),
-                                                  CustomRichText(
-                                                    title: "Bill Number  :  ",
-                                                    data: snapshot
-                                                        .data["billNumber"],
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          blockHeight * 0.5),
-                                                  CustomRichText(
-                                                    title: "Bill Amount  :  ",
-                                                    data: snapshot
-                                                        .data["amount"]
-                                                        .toString(),
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          blockHeight * 0.5),
-                                                  CustomRichText(
-                                                    title: "Units  :  ",
-                                                    data: snapshot.data["units"]
-                                                        .toString(),
-                                                  ),
-                                                  SizedBox(height: blockHeight),
-                                                  CustomRawInputField(
-                                                    labeText: "Paying Amount",
-                                                    isPass: false,
-                                                    fieldController:
-                                                        model.amountController,
-                                                    inputType:
-                                                        TextInputType.number,
-                                                  ),
-                                                  SizedBox(
-                                                    height: blockHeight * 2.5,
-                                                  ),
-                                                ],
-                                              ),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                              vertical: blockHeight * 2,
+                                              horizontal: blockWidth * 5,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.2),
+                                                  blurRadius: 30,
+                                                  spreadRadius: 2,
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomRichText(
+                                                  title: "Name  :  ",
+                                                  data: snapshot
+                                                      .data['name'],
+                                                ),
+                                                SizedBox(
+                                                    height:
+                                                        blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Index  :  ",
+                                                  data: snapshot
+                                                      .data['index'],
+                                                ),
+                                                SizedBox(
+                                                    height:
+                                                        blockHeight * 0.5),
+                                                CustomRichText(
+                                                  title: "Year  :  ",
+                                                  data: snapshot
+                                                      .data['year']
+                                                      .toString(),
+                                                ),
+                                                Container(
+                                                  height: blockHeight * 0.1,
+                                                  width: double.infinity,
+                                                ),
+                                                SizedBox(
+                                                  height: blockHeight * 2.5,
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           SizedBox(height: blockHeight * 2.5),
                                           CustomButton(
-                                            title: "Pay",
+                                            title: "Request",
                                             bgColor: Colors.blue[800],
                                             textColor: Colors.white,
                                             callback: () {
@@ -196,7 +187,7 @@ class ElectricityBillScreen extends StatelessWidget {
                                     );
                                   } else {
                                     return CustomText(
-                                      text: "Invalid bill number",
+                                      text: "Invalid index number",
                                       color: Colors.red,
                                       size: blockWidth * 4,
                                     );
