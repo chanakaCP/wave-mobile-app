@@ -9,6 +9,7 @@ import '../../../CustomWidgets/CustomNotificationCard.dart';
 import '../../../CustomWidgets/CustomPageView.dart';
 import 'LawScreenViewModel.dart';
 
+// ignore: must_be_immutable
 class LawScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
