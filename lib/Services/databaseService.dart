@@ -200,4 +200,14 @@ class DatabaseService {
     }
     return snapshot;
   }
+  
+  Stream<dynamic> getLawyerstList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("lawyer").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
 }
