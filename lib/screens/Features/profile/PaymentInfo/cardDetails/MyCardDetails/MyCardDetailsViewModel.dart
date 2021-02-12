@@ -3,10 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wave_mobile_app/Services/databaseService.dart';
-import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/models/CardDetails.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomAlertDialog.dart';
+
+import '../../../../../../Services/databaseService.dart';
+import '../../../../../../Shared/SizeConfig.dart';
+import '../../../../../../models/CardDetails.dart';
+import '../../../../../CustomWidgets/CustomAlertDialog.dart';
 
 class MyCardDetailsViewModel extends ChangeNotifier {
   double blockHeight = SizeConfig.safeBlockVertical;
