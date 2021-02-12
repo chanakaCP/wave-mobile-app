@@ -21,7 +21,7 @@ class HealthScreenViewModel extends ChangeNotifier {
     return snapshot.data.docs
         .map((doc) => CustomExpandedCard(
               title: doc["hospital"],
-              // subTitle: doc["location"],
+              subTitle: doc["location"],
               email: doc["email"],
               contactNumber: doc["contactNumber"],
               facebook: doc["facebookURL"],

@@ -190,4 +190,14 @@ class DatabaseService {
     }
     return snapshot;
   }
+  
+  Stream<dynamic> getParlimentList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("parliment").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
 }
