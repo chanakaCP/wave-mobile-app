@@ -180,4 +180,14 @@ class DatabaseService {
     }
     return snapshot;
   }
+
+  Stream<dynamic> getHealthList() {
+    Stream<QuerySnapshot> snapshot;
+    try {
+      snapshot = firestoreInstance.collection("hospital").snapshots();
+    } catch (e) {
+      print(" ERROR WHILE GETTING DATA (policeStations): " + e.toString());
+    }
+    return snapshot;
+  }
 }

@@ -7,7 +7,14 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
 class CustomExpandedCard extends StatelessWidget {
-  String title, tailingText, imageURL, email, contactNumber, facebook, web;
+  String title,
+      subTitle,
+      tailingText,
+      imageURL,
+      email,
+      contactNumber,
+      facebook,
+      web;
 
   CustomExpandedCard(
       {@required this.title,
@@ -30,88 +37,109 @@ class CustomExpandedCard extends StatelessWidget {
       },
       builder: (_, model, child) {
         return InkWell(
-          child: Container(
-              margin: EdgeInsets.only(
-                left: blockWidth * 5,
-                right: blockWidth * 5,
-                top: blockWidth * 5,
-              ),
-              padding: EdgeInsets.symmetric(
-                vertical: blockHeight * 3,
-                horizontal: blockWidth * 5,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 20,
-                    spreadRadius: 2,
-                  )
-                ],
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          imageURL,
-                          width: blockWidth * 15,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      SizedBox(width: blockWidth * 2),
-                      VerticalDivider(
-                        endIndent: 7.5,
-                        indent: 7.5,
-                        thickness: 1,
-                        color: Colors.blue[400],
-                      ),
-                      SizedBox(width: blockWidth * 5),
-                      Expanded(
-                        child: CustomText(
-                          text: title,
-                          color: Colors.blue[700],
-                        ),
-                      ),
-                      CustomText(
-                        text: tailingText,
-                        color: Colors.blue[700],
-                      ),
-                    ],
-                  ),
-                  (model.isExpand == true)
-                      ? SizedBox(height: blockHeight * 2)
-                      : Container(),
-                  (model.isExpand == true)
-                      ? Divider(
-                          thickness: 0.5,
-                          color: Colors.blue[900],
-                        )
-                      : Container(),
-                  (model.isExpand == true)
-                      ? (email == null &&
-                              web == null &&
-                              contactNumber == null &&
-                              facebook == null)
-                          ? CustomText(
-                              text: "No contct detaile found",
-                              color: Colors.red,
-                              size: blockWidth * 4,
-                            )
-                          : CustomContactRow(
-                              email: email,
-                              contactNumber: contactNumber,
-                              facebook: facebook,
-                              web: web,
-                            )
-                      : Container(),
-                ],
-              )),
+          child: Expanded(
+            child: Container(
+                margin: EdgeInsets.only(
+                  left: blockWidth * 5,
+                  right: blockWidth * 5,
+                  top: blockWidth * 5,
+                ),
+                padding: EdgeInsets.symmetric(
+                  vertical: blockHeight * 3,
+                  horizontal: blockWidth * 5,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    )
+                  ],
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Column(
+                  children: [
+                    (imageURL != null)
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  imageURL,
+                                  width: blockWidth * 15,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(width: blockWidth * 2),
+                              // VerticalDivider(
+                              //   // endIndent: 7.5,
+                              //   // indent: 7.5,
+                              //   thickness: 5,
+                              //   color: Colors.blue[400],
+                              // ),
+                              // SizedBox(width: blockWidth * 5),
+                              Expanded(
+                                child: CustomText(
+                                  text: title,
+                                  color: Colors.blue[700],
+                                ),
+                              ),
+                              CustomText(
+                                text: tailingText,
+                                color: Colors.blue[700],
+                              ),
+                            ],
+                          )
+                        : Container(
+                            width: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(
+                                  text: title,
+                                  color: Colors.blue[700],
+                                ),
+                                Text(
+                                  title,
+                                  style: TextStyle(
+                                    color: Colors.blue[700],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                    (model.isExpand == true)
+                        ? SizedBox(height: blockHeight * 2)
+                        : Container(),
+                    (model.isExpand == true)
+                        ? Divider(
+                            thickness: 0.5,
+                            color: Colors.blue[900],
+                          )
+                        : Container(),
+                    (model.isExpand == true)
+                        ? (email == null &&
+                                web == null &&
+                                contactNumber == null &&
+                                facebook == null)
+                            ? CustomText(
+                                text: "No contct detaile found",
+                                color: Colors.red,
+                                size: blockWidth * 4,
+                              )
+                            : CustomContactRow(
+                                email: email,
+                                contactNumber: contactNumber,
+                                facebook: facebook,
+                                web: web,
+                              )
+                        : Container(),
+                  ],
+                )),
+          ),
           onTap: () {
             model.onClickExpand();
           },
