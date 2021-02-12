@@ -6,6 +6,7 @@ import '../../../../../Shared/SizeConfig.dart';
 import '../../../../CustomWidgets/CustomPageView.dart';
 import 'AppInfoViewModel.dart';
 
+// ignore: must_be_immutable
 class AppInfoView extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -32,11 +33,10 @@ class AppInfoView extends StatelessWidget {
                           vertical: blockHeight * 5,
                           horizontal: blockWidth * 5),
                       padding: EdgeInsets.only(
-                        right: blockWidth * 5,
-                        left: blockWidth * 5,
-                        top: blockHeight * 5,
-                        bottom: blockHeight
-                      ),
+                          right: blockWidth * 5,
+                          left: blockWidth * 5,
+                          top: blockHeight * 5,
+                          bottom: blockHeight),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [

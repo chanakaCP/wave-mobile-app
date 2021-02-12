@@ -9,9 +9,10 @@ class FMListScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
 
+  Stream fmDataStream;
+
   double blockHeight = SizeConfig.safeBlockVertical;
 
-  Stream fmDataStream;
   getDataStream() {
     fmDataStream = databaseService.getMediaList("fmChannels");
     return fmDataStream;
