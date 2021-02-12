@@ -73,14 +73,7 @@ class CustomExpandedCard extends StatelessWidget {
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            SizedBox(width: blockWidth * 2),
-                            // VerticalDivider(
-                            //   // endIndent: 7.5,
-                            //   // indent: 7.5,
-                            //   thickness: 5,
-                            //   color: Colors.blue[400],
-                            // ),
-                            // SizedBox(width: blockWidth * 5),
+                            SizedBox(width: blockWidth * 5),
                             Expanded(
                               child: CustomText(
                                 text: title,

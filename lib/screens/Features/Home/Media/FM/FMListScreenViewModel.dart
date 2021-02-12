@@ -9,20 +9,21 @@ class FMListScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
   final DatabaseService databaseService = DatabaseService();
 
+  Stream fmDataStream;
+
   double blockHeight = SizeConfig.safeBlockVertical;
 
-  Stream fmDataStream;
   getDataStream() {
     fmDataStream = databaseService.getMediaList("fmChannels");
     return fmDataStream;
   }
 
-  loadCompanies(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
+  loadChannels(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
     return snapshot.data.docs
         .map((doc) => CustomExpandedCard(
               title: doc["channel"],
-              tailingText: doc["channelId"],
-              imageURL: "assets/logo/fm_y.jpg",
+              tailingText: doc["rating"].toString(),
+              imageURL: doc["imageURL"],
               email: doc["email"],
               contactNumber: doc["contactNumber"],
               facebook: doc["facebookURL"],
@@ -31,3 +32,5 @@ class FMListScreenViewModel extends ChangeNotifier {
         .toList();
   }
 }
+
+// "assets/logo/fm/fm_y.jpg"
