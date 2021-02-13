@@ -28,31 +28,37 @@ class FMListScreen extends StatelessWidget {
                 await model.authService.signOut();
               },
               childWidget: SingleChildScrollView(
-                child: Container(
-                  height: blockHeight * 87.5,
-                  alignment: Alignment.center,
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: model.getDataStream(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return CustomLoading();
-                      } else {
-                        if (snapshot.hasData && snapshot.data.size != 0) {
-                          return Container(
-                            child: ListView(
-                              scrollDirection: Axis.vertical,
-                              children: model.loadChannels(snapshot, context),
-                            ),
-                          );
-                        } else {
-                          return CustomNotificationCard(
-                            title:
-                                "Something went wrong.. Plese restart the app after few minutes",
-                          );
-                        }
-                      }
-                    },
-                  ),
+                child: Column(
+                  children: [
+                    Container(
+                      height: blockHeight * 87.5,
+                      alignment: Alignment.center,
+                      child: StreamBuilder<QuerySnapshot>(
+                        stream: model.getDataStream(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return CustomLoading();
+                          } else {
+                            if (snapshot.hasData && snapshot.data.size != 0) {
+                              return Container(
+                                child: ListView(
+                                  scrollDirection: Axis.vertical,
+                                  children:
+                                      model.loadChannels(snapshot, context),
+                                ),
+                              );
+                            } else {
+                              return CustomNotificationCard(
+                                title:
+                                    "Something went wrong.. Plese restart the app after few minutes",
+                              );
+                            }
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
