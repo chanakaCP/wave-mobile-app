@@ -37,6 +37,19 @@ class CustomContactRow extends StatelessWidget {
     }
   }
 
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,7 +69,9 @@ class CustomContactRow extends StatelessWidget {
           (this.web != null)
               ? CustomIconButton(
                   icon: Icons.web,
-                  callback: () {},
+                  callback: () {
+                    _launchInBrowser(web);
+                  },
                 )
               : Container(),
           (this.facebook != null)
@@ -65,7 +80,9 @@ class CustomContactRow extends StatelessWidget {
           (this.facebook != null)
               ? CustomIconButton(
                   icon: Icons.link,
-                  callback: () {},
+                  callback: () {
+                    _launchInBrowser(facebook);
+                  },
                 )
               : Container(),
           (this.email != null) ? SizedBox(width: blockWidth * 5) : Container(),

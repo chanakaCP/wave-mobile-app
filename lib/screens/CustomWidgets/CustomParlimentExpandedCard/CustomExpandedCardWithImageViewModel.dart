@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomParlimentExpandedCardViewModel extends ChangeNotifier {
+class CustomExpandedCardWithImageViewModel extends ChangeNotifier {
   bool isExpand;
 
   inititalize() {

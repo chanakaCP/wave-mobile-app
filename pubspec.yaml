@@ -65,6 +65,8 @@ flutter:
     - assets/logo/tv/
     - assets/logo/insurance/
     - assets/ServiceProviders/
+    - assets/profile/parliment/
+    - assets/profile/law/
     - assets/icons/
     - assets/icons/bills/
     - assets/icons/media/

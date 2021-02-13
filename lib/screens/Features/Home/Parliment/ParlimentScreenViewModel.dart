@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomParlimentExpandedCard/CustomExpandedCardWithImageView.dart';
 import '../../../../Services/AuthService.dart';
 import '../../../../Services/databaseService.dart';
-import '../../../CustomWidgets/CustomParlimentExpandedCard/CustomExpandedCardView.dart';
 
 class ParlimentScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
@@ -19,10 +18,10 @@ class ParlimentScreenViewModel extends ChangeNotifier {
 
   loadMinistors(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
     return snapshot.data.docs
-        .map((doc) => CustomParlimentExpandedCard(
+        .map((doc) => CustomExpandedCardWithImage(
               title: doc["name"],
               subTitle: doc["position"],
-              imageURL: "assets/logo/tv_sirasa.jpg",
+              imageURL: doc["imageURL"],
               email: doc["email"],
               contactNumber: doc["contactNumber"],
               facebook: doc["facebookURL"],
