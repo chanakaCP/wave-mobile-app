@@ -86,10 +86,24 @@ class PersonalInfoContainer extends StatelessWidget {
               child: Container(
                 height: blockHeight * 15,
                 alignment: Alignment(0.0, -10.0),
-                child: CircleAvatar(
-                  // backgroundImage: NetworkImage("https://drive.google.com/file/d/1Ulwa3Z3RZ7OLCgARnrIrHyY1L53Z0scz/view?usp=sharing"),
-                  backgroundColor: Colors.blueGrey[100],
-                  radius: 60.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(60.0),
+                  ),
+                  child: CircleAvatar(
+                    backgroundImage:
+                        AssetImage("assets/profile/profileOwner.jpg"),
+                    backgroundColor: Colors.blueGrey[100],
+                    radius: 60.0,
+                  ),
                 ),
               ),
               onTap: () {
