@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomContactRow.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomParlimentExpandedCard/CustomExpandedCardViewModel.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomParlimentExpandedCard/CustomExpandedCardWithImageViewModel.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
-class CustomParlimentExpandedCard extends StatelessWidget {
+class CustomExpandedCardWithImage extends StatelessWidget {
   String title, subTitle, imageURL, email, contactNumber, facebook, web;
 
-  CustomParlimentExpandedCard(
+  CustomExpandedCardWithImage(
       {@required this.title,
       this.subTitle,
       this.imageURL,
@@ -23,8 +23,8 @@ class CustomParlimentExpandedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CustomParlimentExpandedCardViewModel>.reactive(
-      viewModelBuilder: () => CustomParlimentExpandedCardViewModel(),
+    return ViewModelBuilder<CustomExpandedCardWithImageViewModel>.reactive(
+      viewModelBuilder: () => CustomExpandedCardWithImageViewModel(),
       onModelReady: (model) => {
         model.inititalize(),
       },
@@ -57,28 +57,31 @@ class CustomParlimentExpandedCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(50.0),
                         child: Image.asset(
                           imageURL,
                           width: blockWidth * 15,
-                          fit: BoxFit.contain,
+                          height: blockWidth * 15,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       SizedBox(width: blockWidth * 2),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            text: title,
-                            color: Colors.blue[700],
-                          ),
-                          Text(
-                            subTitle,
-                            style: TextStyle(
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
+                              text: title,
                               color: Colors.blue[700],
                             ),
-                          ),
-                        ],
+                            Text(
+                              subTitle,
+                              style: TextStyle(
+                                color: Colors.blue[700],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

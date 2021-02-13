@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_mobile_app/models/SubjectResult.dart';
 
 import '../../../../../Services/AuthService.dart';
 import '../../../../../Services/databaseService.dart';
@@ -12,6 +13,7 @@ class ALevelScreenViewModel extends ChangeNotifier {
   final yearController = TextEditingController();
 
   Stream aLDataStream;
+  SubjectResult subjectResult = new SubjectResult();
 
   String email = "educationDepartment@gmail.com";
   String contactNumber = "+94716816135";
@@ -28,7 +30,8 @@ class ALevelScreenViewModel extends ChangeNotifier {
   }
 
   getDataStream() {
-    aLDataStream = databaseService.getCertificate("AL-certificate", indexNumberController.text, yearController.text);
+    aLDataStream = databaseService.getCertificate(
+        "AL-certificate", indexNumberController.text, yearController.text);
     return aLDataStream;
   }
 

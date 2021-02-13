@@ -70,6 +70,7 @@ class CustomExpandedCard extends StatelessWidget {
                               child: Image.asset(
                                 imageURL,
                                 width: blockWidth * 15,
+                                height: blockWidth * 12.5,
                                 fit: BoxFit.contain,
                               ),
                             ),

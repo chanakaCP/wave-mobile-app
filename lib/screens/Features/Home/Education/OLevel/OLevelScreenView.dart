@@ -71,7 +71,8 @@ class OLevelScreenView extends StatelessWidget {
                                   CustomRawInputField(
                                     labeText: "index Number",
                                     isPass: false,
-                                    fieldController: model.indexNumberController,
+                                    fieldController:
+                                        model.indexNumberController,
                                     inputType: TextInputType.number,
                                   ),
                                   SizedBox(height: blockHeight * 2.5),
@@ -110,6 +111,14 @@ class OLevelScreenView extends StatelessWidget {
                                 } else {
                                   if (snapshot.hasData &&
                                       snapshot.data.exists) {
+                                    model.subjectResult.index =
+                                        snapshot.data["index"];
+                                    model.subjectResult.name =
+                                        snapshot.data["name"];
+                                    model.subjectResult.year =
+                                        snapshot.data["year"];
+                                    model.subjectResult.result =
+                                        snapshot.data["result"];
                                     return Container(
                                       width: double.infinity,
                                       padding: EdgeInsets.only(
@@ -142,24 +151,19 @@ class OLevelScreenView extends StatelessWidget {
                                               children: [
                                                 CustomRichText(
                                                   title: "Name  :  ",
-                                                  data: snapshot
-                                                      .data['name'],
+                                                  data: snapshot.data['name'],
                                                 ),
                                                 SizedBox(
-                                                    height:
-                                                        blockHeight * 0.5),
+                                                    height: blockHeight * 0.5),
                                                 CustomRichText(
                                                   title: "Index  :  ",
-                                                  data: snapshot
-                                                      .data['index'],
+                                                  data: snapshot.data['index'],
                                                 ),
                                                 SizedBox(
-                                                    height:
-                                                        blockHeight * 0.5),
+                                                    height: blockHeight * 0.5),
                                                 CustomRichText(
                                                   title: "Year  :  ",
-                                                  data: snapshot
-                                                      .data['year']
+                                                  data: snapshot.data['year']
                                                       .toString(),
                                                 ),
                                                 Container(
@@ -167,8 +171,24 @@ class OLevelScreenView extends StatelessWidget {
                                                   width: double.infinity,
                                                 ),
                                                 SizedBox(
-                                                  height: blockHeight * 2.5,
+                                                  height: blockHeight * 1.5,
                                                 ),
+                                                CustomText(
+                                                  text: "--- Results ---",
+                                                  color: Colors.blue[900],
+                                                  weight: FontWeight.w400,
+                                                ),
+                                                SizedBox(
+                                                  height: blockHeight * 1.5,
+                                                ),
+                                                for (var s in model
+                                                    .subjectResult.result)
+                                                  CustomRichText(
+                                                    title:
+                                                        s["subject"] + "  :  ",
+                                                    data:
+                                                        s["result"].toString(),
+                                                  ),
                                               ],
                                             ),
                                           ),

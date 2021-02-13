@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
+import 'package:wave_mobile_app/screens/Features/Home/Bills/InsuranceBills/InsuranceBillScreenView.dart';
 import '../../../../../Services/AuthService.dart';
 import '../../../../../Services/databaseService.dart';
 import '../../../../CustomWidgets/CustomBillCard.dart';
-import 'InsuranceBillScreenView.dart';
 
 class InsuranceCompanyListScreenModel extends ChangeNotifier {
   final AuthService authService = AuthService();
@@ -22,7 +21,7 @@ class InsuranceCompanyListScreenModel extends ChangeNotifier {
         .map(
           (doc) => CustomBillCard(
             title: doc["name"],
-            imageURL: "assets/logo/insurance.png",
+            imageURL: doc["imageURL"],
             callback: () {
               Get.to(InsuranceBillScreen(
                 companyName: doc["name"],
@@ -35,3 +34,5 @@ class InsuranceCompanyListScreenModel extends ChangeNotifier {
         .toList();
   }
 }
+
+// "assets/logo/insurance/aia.jpg"

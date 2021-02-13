@@ -32,10 +32,9 @@ class _CustomRawInputFieldState extends State<CustomRawInputField> {
     return Container(
       child: TextFormField(
         cursorColor: Colors.blue[900],
-        // maxLength: 20,
         obscureText: (isHide == true) ? true : false,
         controller: this.widget.fieldController,
-        validator: validatePass,
+        validator: validate,
         keyboardType: (this.widget.inputType == null)
             ? TextInputType.text
             : this.widget.inputType,
@@ -64,7 +63,7 @@ class _CustomRawInputFieldState extends State<CustomRawInputField> {
     );
   }
 
-  String validatePass(String value) {
+  String validate(String value) {
     dynamic error;
     if (value.isEmpty) {
       error = "This field can't be empty";

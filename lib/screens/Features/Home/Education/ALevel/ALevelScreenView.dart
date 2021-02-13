@@ -111,6 +111,15 @@ class ALevelScreenView extends StatelessWidget {
                                 } else {
                                   if (snapshot.hasData &&
                                       snapshot.data.exists) {
+                                    model.subjectResult.index =
+                                        snapshot.data["index"];
+                                    model.subjectResult.name =
+                                        snapshot.data["name"];
+                                    model.subjectResult.year =
+                                        snapshot.data["year"];
+                                    model.subjectResult.result =
+                                        snapshot.data["result"];
+
                                     return Container(
                                       width: double.infinity,
                                       padding: EdgeInsets.only(
@@ -163,8 +172,24 @@ class ALevelScreenView extends StatelessWidget {
                                                   width: double.infinity,
                                                 ),
                                                 SizedBox(
-                                                  height: blockHeight * 2.5,
+                                                  height: blockHeight * 1.5,
                                                 ),
+                                                CustomText(
+                                                  text: "--- Results ---",
+                                                  color: Colors.blue[900],
+                                                  weight: FontWeight.w400,
+                                                ),
+                                                SizedBox(
+                                                  height: blockHeight * 1.5,
+                                                ),
+                                                for (var s in model
+                                                    .subjectResult.result)
+                                                  CustomRichText(
+                                                    title:
+                                                        s["subject"] + "  :  ",
+                                                    data:
+                                                        s["result"].toString(),
+                                                  ),
                                               ],
                                             ),
                                           ),

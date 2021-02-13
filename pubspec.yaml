@@ -37,7 +37,8 @@ dependencies:
   flip_card: ^0.4.4
   awesome_card: ^1.1.0
   modal_bottom_sheet: ^1.0.0+1
-  google_maps_flutter: ^1.2.0
+  # google_maps_flutter: ^1.2.0
+  stripe_payment: ^1.0.10
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -66,6 +67,9 @@ flutter:
     - assets/logo/tv/
     - assets/logo/insurance/
     - assets/ServiceProviders/
+    - assets/profile/
+    - assets/profile/parliment/
+    - assets/profile/law/
     - assets/icons/
     - assets/icons/bills/
     - assets/icons/media/
