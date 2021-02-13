@@ -4,6 +4,21 @@ import 'package:wave_mobile_app/Services/AuthService.dart';
 class TravelScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
 
+  final formKey = GlobalKey<FormState>();
+  final fromController = TextEditingController();
+  final toController = TextEditingController();
+  bool isButtonClicked = false;
+
+  void initialise() {
+    fromController.text = "";
+    toController.text = "";
+  }
+
+  onClickProceed() async {
+    isButtonClicked = true;
+    notifyListeners();
+  }
+
 //   final List<GoogleMapExampleAppPage> _allPages = <GoogleMapExampleAppPage>[
 //   MapUiPage(),
 //   MapCoordinatesPage(),
