@@ -37,6 +37,7 @@ dependencies:
   flip_card: ^0.4.4
   awesome_card: ^1.1.0
   modal_bottom_sheet: ^1.0.0+1
+  google_maps_flutter: ^1.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
