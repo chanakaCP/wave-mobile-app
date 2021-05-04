@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
-import 'package:wave_mobile_app/models/payment.dart';
+import 'package:wave_mobile_app/models/Payment.dart';
 
 import 'CustomText.dart';
 

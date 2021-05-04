@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
-import 'package:wave_mobile_app/models/payment.dart';
+import 'package:wave_mobile_app/models/Payment.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPaymentHistoryCard.dart';
 
 // ignore: camel_case_types

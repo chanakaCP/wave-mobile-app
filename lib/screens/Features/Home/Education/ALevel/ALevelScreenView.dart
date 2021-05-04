@@ -109,7 +109,9 @@ class ALevelScreenView extends StatelessWidget {
                                     ConnectionState.waiting) {
                                   return CustomLoading();
                                 } else {
-                                  if (snapshot.hasData &&
+                                  if (snapshot.connectionState ==
+                                          ConnectionState.done &&
+                                      snapshot.hasData &&
                                       snapshot.data.exists) {
                                     model.subjectResult.index =
                                         snapshot.data["index"];

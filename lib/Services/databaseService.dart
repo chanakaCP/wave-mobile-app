@@ -87,11 +87,9 @@ class DatabaseService {
           .collection("users")
           .doc(user.uid.toString())
           .snapshots();
-      // List<Card>
     } catch (e) {
       print(" ERROR WHILE GETTING DATA (payments): " + e.toString());
     }
-
     return snapshot;
   }
 
@@ -203,7 +201,7 @@ class DatabaseService {
     }
     return snapshot;
   }
-  
+
   Stream<dynamic> getParlimentList() {
     Stream<QuerySnapshot> snapshot;
     try {
@@ -213,7 +211,7 @@ class DatabaseService {
     }
     return snapshot;
   }
-  
+
   Stream<dynamic> getLawyerstList() {
     Stream<QuerySnapshot> snapshot;
     try {
