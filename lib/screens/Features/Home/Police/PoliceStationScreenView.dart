@@ -41,9 +41,6 @@ class PoliceStationScreen extends StatelessWidget {
               callbackHead: () {
                 Get.back();
               },
-              callbackTail: () async {
-                await model.authService.signOut();
-              },
               childWidget: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -195,7 +192,9 @@ class PoliceStationScreen extends StatelessWidget {
                                             bgColor: Colors.blue[800],
                                             textColor: Colors.white,
                                             callback: () {
-                                              model.onClickPay();
+                                              model.onClickPay(snapshot
+                                                  .data["fine"]
+                                                  .toString());
                                             },
                                           ),
                                           SizedBox(height: blockHeight * 2.5),

@@ -7,7 +7,6 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomContactRow.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Bills/TelephoneBill/PhoneBillScreenViewModel.dart';
 
 // ignore: must_be_immutable
@@ -36,9 +35,6 @@ class PhoneBillScreen extends StatelessWidget {
               title: serviceProvider,
               callbackHead: () {
                 Get.back();
-              },
-              callbackTail: () async {
-                await model.authService.signOut();
               },
               childWidget: SingleChildScrollView(
                 child: Column(
@@ -118,25 +114,10 @@ class PhoneBillScreen extends StatelessWidget {
                                 model.onClickProceed();
                               },
                             ),
-                            SizedBox(height: blockHeight * 1.5),
-                            (model.isError == true)
-                                ? CustomText(
-                                    text: model.error,
-                                    color: Colors.red,
-                                    size: blockWidth * 4,
-                                  )
-                                : Container(),
-                            (model.isSuccess == true)
-                                ? CustomText(
-                                    text: "Successfull Message",
-                                    color: Colors.green,
-                                    size: blockWidth * 4,
-                                  )
-                                : Container(),
                             SizedBox(height: blockHeight * 3.5),
-                            (model.isLoading == false)
-                                ? Container()
-                                : CustomLoading(),
+                            (model.isLoading == true)
+                                ? CustomLoading()
+                                : Container(),
                           ],
                         ),
                       ),

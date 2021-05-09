@@ -30,9 +30,6 @@ class ElectricityBillScreen extends StatelessWidget {
               callbackHead: () {
                 Get.back();
               },
-              callbackTail: () async {
-                await model.authService.signOut();
-              },
               childWidget: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -81,7 +78,7 @@ class ElectricityBillScreen extends StatelessWidget {
                           ),
                           SizedBox(height: blockHeight * 2.5),
                           CustomButton(
-                            title: "Proceed",
+                            title: "Check",
                             bgColor: Colors.blue[800],
                             textColor: Colors.white,
                             callback: () {

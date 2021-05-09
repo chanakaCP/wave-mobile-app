@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
+import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/cardDetails/PaymentInfoScreenView.dart';
 
 class PoliceStationScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
@@ -30,7 +32,7 @@ class PoliceStationScreenViewModel extends ChangeNotifier {
     return billDataStream;
   }
 
-  onClickPay() {
-    notifyListeners();
+  onClickPay(String fine) {
+    Get.to(PaymentInfoScreenView(isPay: true, amount: fine));
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Services/databaseService.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/snackbar/CustomSuccessSnackBar.dart';
+import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/cardDetails/PaymentInfoScreenView.dart';
 
 class WaterBillScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
@@ -36,7 +39,12 @@ class WaterBillScreenViewModel extends ChangeNotifier {
 
   onClickPay() {
     if (paymentFormKey.currentState.validate()) {
-      notifyListeners();
+      if (amountController.text.isNumericOnly) {
+        Get.to(
+            PaymentInfoScreenView(isPay: true, amount: amountController.text));
+      } else {
+        CustomSnackBar().failed(msg: "Invalid Amount");
+      }
     }
   }
 }

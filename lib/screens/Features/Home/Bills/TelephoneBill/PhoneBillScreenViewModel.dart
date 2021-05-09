@@ -1,5 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/snackbar/CustomSuccessSnackBar.dart';
+import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/cardDetails/PaymentInfoScreenView.dart';
 
 class PhoneBillScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
@@ -10,9 +13,9 @@ class PhoneBillScreenViewModel extends ChangeNotifier {
   final amountController = TextEditingController();
   final confirmAmountController = TextEditingController();
 
-  bool isError = false;
+  // bool isError = false;
   bool isLoading = false;
-  bool isSuccess = false;
+  // bool isSuccess = false;
   String serviceProvider, mobileNumberFormat;
   String error = '';
 
@@ -32,40 +35,39 @@ class PhoneBillScreenViewModel extends ChangeNotifier {
   }
 
   onClickProceed() async {
+    isLoading = true;
     if (formKey.currentState.validate()) {
-      isLoading = true;
-      isError = false;
-
       if (mobileController.text != confirmMobileController.text) {
         isLoading = false;
-        isError = true;
-        error = "Mobile number doesn't match";
+        CustomSnackBar().failed(msg: "Mobile number doesn't match");
       } else if (amountController.text != confirmAmountController.text) {
         isLoading = false;
-        isError = true;
-        error = "Amount doesn't match";
+        CustomSnackBar().failed(msg: "Amount doesn't match");
       } else {
         if (mobileController.text.length == 10) {
           if (checkNumberValidity() == true) {
             isLoading = false;
-            isSuccess = true;
-            mobileController.text = "";
-            confirmMobileController.text = "";
-            amountController.text = "";
-            confirmAmountController.text = "";
+            // isSuccess = true;
+            if (amountController.text.isNumericOnly) {
+              Get.to(PaymentInfoScreenView(
+                  isPay: true, amount: amountController.text));
+            } else {
+              CustomSnackBar().failed(msg: "Invalid Amount");
+            }
           } else {
             isLoading = false;
-            isError = true;
-            error = "Number didn't match to the service provider";
+            CustomSnackBar()
+                .failed(msg: "Number didn't match to the service provider");
           }
         } else {
           isLoading = false;
-          isError = true;
-          error = "Number should have 10 digits";
+          CustomSnackBar().failed(msg: "Number should have 10 digits");
         }
       }
-      notifyListeners();
+    } else {
+      isLoading = false;
     }
+    notifyListeners();
   }
 
   bool checkNumberValidity() {
