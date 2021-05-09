@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomNotificationCard.dart';
 import 'MyCardDetailsViewModel.dart';
 
 // ignore: must_be_immutable
 class MyCardDetailsView extends StatelessWidget {
+  MyCardDetailsView({@required this.isPay, this.amount});
+  bool isPay;
+  String amount;
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MyCardDetailsViewModel>.reactive(
       viewModelBuilder: () => MyCardDetailsViewModel(),
+      onModelReady: (model) => model.initialise(amount),
       builder: (_, model, child) {
         return Container(
           padding: EdgeInsets.only(top: blockHeight * 3),
@@ -26,12 +29,17 @@ class MyCardDetailsView extends StatelessWidget {
                 if (!snapshot.data.data()["cardInfo"].isEmpty) {
                   return ListView(
                     scrollDirection: Axis.vertical,
-                    children: model.loadCards(snapshot, context),
+                    children: model.loadCards(snapshot, context, isPay),
                   );
                 } else {
-                  return CustomNotificationCard(
-                    title:
-                        "Something went wrong.. Plese restart the app after few minutes",
+                  return Container(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "No saved cards... \n click Add Card button to save your card",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w300, fontSize: 20),
+                    ),
                   );
                 }
               }
