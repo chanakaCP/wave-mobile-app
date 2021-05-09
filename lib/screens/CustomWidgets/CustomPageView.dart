@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 // ignore: must_be_immutable
 class CustomPageView extends StatelessWidget {
   final VoidCallback callbackHead;
-  final VoidCallback callbackTail;
   final Widget childWidget;
   final String title;
 
   CustomPageView({
     @required this.callbackHead,
-    @required this.callbackTail,
     @required this.childWidget,
     @required this.title,
   });
@@ -54,7 +53,7 @@ class CustomPageView extends StatelessWidget {
                   icon: Icon(Icons.filter_list),
                   color: Colors.white,
                   onPressed: () async {
-                    callbackTail();
+                    await AuthService().signOut();
                   },
                 )
               ],
