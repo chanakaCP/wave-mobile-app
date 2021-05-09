@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/models/CardDetails.dart';
 
 class DatabaseService {
@@ -93,16 +94,20 @@ class DatabaseService {
     return snapshot;
   }
 
-  Stream<dynamic> getPaymentHistory() {
+  Stream<dynamic> getPaymentHistory(BuildContext context) {
     User user = _auth.currentUser;
     Stream<DocumentSnapshot> snapshot;
-
+    final snackBar = SnackBar(
+      content: Text("Something went wrong"),
+      backgroundColor: Colors.red,
+    );
     try {
       snapshot = firestoreInstance
           .collection("payments")
           .doc(user.uid.toString())
           .snapshots();
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       print("ERROR WHILE GETTING PAYAMENT DETAILS :" + e.toString());
     }
     return snapshot;

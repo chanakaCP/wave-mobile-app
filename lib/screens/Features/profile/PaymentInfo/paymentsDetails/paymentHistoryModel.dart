@@ -13,8 +13,8 @@ class paymentHistoryModel extends ChangeNotifier {
   Stream paymenStream;
   Payment paymentDetails;
 
-  getDataStream() {
-    paymenStream = databaseService.getPaymentHistory();
+  getDataStream(BuildContext context) {
+    paymenStream = databaseService.getPaymentHistory(context);
     return paymenStream;
   }
 

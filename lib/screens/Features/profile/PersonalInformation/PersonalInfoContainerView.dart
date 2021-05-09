@@ -25,7 +25,6 @@ class PersonalInfoContainer extends StatelessWidget {
 
   onClickUpload() async {
     profilePicURL = await dbService.uploadFile(profilePic, profilePicName);
-    print("profile URL" + profilePicURL.toString());
     if (profilePicURL != null) {
       try {
         dbService.changeProfilePic(profilePicURL);
@@ -39,7 +38,7 @@ class PersonalInfoContainer extends StatelessWidget {
     try {
       profilePic = await FilePicker.getFile(type: FileType.IMAGE);
       profilePicName = path.basename(profilePic.path);
-      // print("local path" + profilePicName);
+
       if (profilePic != null) {
         showDialog(
           context: context,

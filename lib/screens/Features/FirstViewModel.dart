@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
+import 'package:wave_mobile_app/Services/paymentService.dart';
 
 import 'Home/HomeScreenView.dart';
 import 'profile/ProfileScreenView.dart';
@@ -13,6 +14,10 @@ class FirstViewModel extends ChangeNotifier {
     HomeScreen(),
     ProfileScreen(),
   ];
+
+  initialise() {
+    StripeService.init();
+  }
 
   void onTabTapped(int index) {
     currentIndex = index;

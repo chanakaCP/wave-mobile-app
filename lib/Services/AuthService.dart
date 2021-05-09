@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wave_mobile_app/models/RegisterUser.dart';
 import 'package:wave_mobile_app/models/User.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/snackbar/CustomSuccessSnackBar.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -38,7 +39,7 @@ class AuthService {
         'mobileNumber': regUser.mobileNumber,
         'email': regUser.email,
         'id': result.user.uid,
-        'profilePic' : "",
+        'profilePic': "",
       });
       return _userFromFireBaseUser(user);
     } catch (e) {
@@ -56,12 +57,15 @@ class AuthService {
     }
   }
 
-  Future changePassword(String password) async{
+  Future changePassword(String password) async {
     User user = _auth.currentUser;
-   
-    user.updatePassword(password).then((_){
-      print("Successfully changed password");
-    }).catchError((error){
+
+    user.updatePassword(password).then((value) {
+      CustomSnackBar().loading();
+    }).whenComplete(() {
+      CustomSnackBar().success(msg: "Successfully reset password");
+    }).catchError((error) {
+      CustomSnackBar().failed();
       print("Password can't be changed" + error.toString());
     });
   }

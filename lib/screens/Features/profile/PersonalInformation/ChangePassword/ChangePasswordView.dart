@@ -6,7 +6,6 @@ import 'package:wave_mobile_app/screens/CustomWidgets/CustomButton.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomRawInputField.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 import 'ChangePasswordViewModel.dart';
 
 // ignore: must_be_immutable
@@ -25,9 +24,6 @@ class ChangePasswordView extends StatelessWidget {
               title: "change password",
               callbackHead: () {
                 Get.back();
-              },
-              callbackTail: () async {
-                await model.authService.signOut();
               },
               childWidget: SingleChildScrollView(
                 child: Container(
@@ -89,20 +85,20 @@ class ChangePasswordView extends StatelessWidget {
                           },
                         ),
                         SizedBox(height: blockHeight * 1.5),
-                        (model.isError == true)
-                            ? CustomText(
-                                text: model.error,
-                                color: Colors.red,
-                                size: blockWidth * 4,
-                              )
-                            : Container(),
-                        (model.isSuccess == true)
-                            ? CustomText(
-                                text: "Successfully changed password",
-                                color: Colors.green,
-                                size: blockWidth * 4,
-                              )
-                            : Container(),
+                        // (model.isError == true)
+                        //     ? CustomText(
+                        //         text: model.error,
+                        //         color: Colors.red,
+                        //         size: blockWidth * 4,
+                        //       )
+                        //     : Container(),
+                        // (model.isSuccess == true)
+                        //     ? CustomText(
+                        //         text: "Successfully changed password",
+                        //         color: Colors.green,
+                        //         size: blockWidth * 4,
+                        //       )
+                        //     : Container(),
                         SizedBox(height: blockHeight * 3.5),
                         (model.isLoading == false)
                             ? Container()

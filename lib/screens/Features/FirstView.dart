@@ -18,14 +18,12 @@ class FirstView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<FirstViewModel>.reactive(
       viewModelBuilder: () => FirstViewModel(),
+      onModelReady: (model) => model.initialise(),
       builder: (_, model, child) {
         return SafeArea(
           child: Scaffold(
             body: CustomPageView(
               callbackHead: null,
-              callbackTail: () async {
-                await model.authService.signOut();
-              },
               title: "Wave",
               childWidget: Column(
                 children: [

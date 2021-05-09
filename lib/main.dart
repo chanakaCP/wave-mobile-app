@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<LocalUser>.value(
+      initialData: null,
       value: AuthService().user,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

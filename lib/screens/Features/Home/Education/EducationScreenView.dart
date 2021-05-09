@@ -23,9 +23,6 @@ class EducationScreen extends StatelessWidget {
               callbackHead: () {
                 Get.back();
               },
-              callbackTail: () async {
-                await model.authService.signOut();
-              },
               childWidget: SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.only(top: blockHeight * 2),

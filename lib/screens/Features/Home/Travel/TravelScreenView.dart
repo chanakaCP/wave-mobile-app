@@ -17,9 +17,6 @@ class TravelScreen extends StatelessWidget {
               callbackHead: () {
                 Get.back();
               },
-              callbackTail: () async {
-                await model.authService.signOut();
-              },
               childWidget: SingleChildScrollView(
                 child: Container(
                   child: Text("Travel screen"),

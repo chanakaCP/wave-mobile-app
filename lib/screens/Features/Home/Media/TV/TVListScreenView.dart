@@ -24,9 +24,6 @@ class TVListScreen extends StatelessWidget {
               callbackHead: () {
                 Get.back();
               },
-              callbackTail: () async {
-                await model.authService.signOut();
-              },
               childWidget: SingleChildScrollView(
                 child: Container(
                   height: blockHeight * 87.5,

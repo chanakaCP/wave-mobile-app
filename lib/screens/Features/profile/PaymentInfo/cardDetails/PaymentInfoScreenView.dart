@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../Services/AuthService.dart';
 import '../../../../../Shared/SizeConfig.dart';
 import '../../../../CustomWidgets/CustomPageView.dart';
@@ -8,6 +7,10 @@ import 'AddCardDetails/AddCardDetailsView.dart';
 import 'MyCardDetails/MyCardDetailesView.dart';
 
 class PaymentInfoScreenView extends StatefulWidget {
+  PaymentInfoScreenView({@required this.isPay, this.amount});
+  final bool isPay;
+  String amount;
+
   @override
   _PaymentTabViewScreenState createState() => _PaymentTabViewScreenState();
 }
@@ -17,14 +20,14 @@ class _PaymentTabViewScreenState extends State<PaymentInfoScreenView>
   double blockHeight = SizeConfig.safeBlockVertical;
   double blockWidth = SizeConfig.safeBlockHorizontal;
   final AuthService authService = AuthService();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
           elevation: 2.5,
-          child: new Icon(Icons.add),
+          icon: Icon(Icons.add),
+          label: Text("Add Card"),
           backgroundColor: Colors.blue[800],
           onPressed: () {
             showModalBottomSheet(
@@ -48,14 +51,14 @@ class _PaymentTabViewScreenState extends State<PaymentInfoScreenView>
             callbackHead: () {
               Get.back();
             },
-            callbackTail: () async {
-              await authService.signOut();
-            },
             title: "My cards",
             childWidget: SingleChildScrollView(
               child: Container(
                 height: blockHeight * 88,
-                child: MyCardDetailsView(),
+                child: MyCardDetailsView(
+                  isPay: this.widget.isPay,
+                  amount: this.widget.amount,
+                ),
               ),
             ),
           ),
