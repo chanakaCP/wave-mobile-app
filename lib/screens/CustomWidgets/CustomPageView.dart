@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wave_mobile_app/Services/AuthService.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
@@ -25,37 +24,31 @@ class CustomPageView extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: blockHeight * 2),
+            padding: EdgeInsets.only(right: blockHeight * 2),
             height: blockHeight * 12.5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                (callbackHead != null)
-                    ? IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        color: Colors.white,
-                        onPressed: () {
-                          callbackHead();
-                        },
-                      )
-                    : IconButton(
-                        icon: Icon(null),
-                        color: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        onPressed: () {},
-                      ),
-                CustomText(
-                  text: title,
-                  size: blockHeight * 4,
-                  weight: FontWeight.w400,
+                if (callbackHead != null)
+                  Positioned(
+                    left: blockWidth,
+                    top: 2.5 * blockHeight,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.white,
+                      onPressed: () {
+                        callbackHead();
+                      },
+                    ),
+                  ),
+                Positioned(
+                  top: 3 * blockHeight,
+                  child: CustomText(
+                    text: title,
+                    size: blockHeight * 4,
+                    weight: FontWeight.w400,
+                  ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.filter_list),
-                  color: Colors.white,
-                  onPressed: () async {
-                    await AuthService().signOut();
-                  },
-                )
               ],
             ),
           ),

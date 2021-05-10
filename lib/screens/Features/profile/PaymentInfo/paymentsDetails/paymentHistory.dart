@@ -5,7 +5,6 @@ import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomLoading.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/CustomPageView.dart';
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomText.dart';
 
 import 'paymentHistoryModel.dart';
 
@@ -31,12 +30,12 @@ class PaymentHistory extends StatelessWidget {
                   height: blockHeight * 86,
                   padding: EdgeInsets.only(top: blockHeight * 3),
                   child: StreamBuilder<DocumentSnapshot>(
-                    stream: model.getDataStream(context),
+                    stream: model.getDataStream(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return CustomLoading();
                       } else {
-                        if (!snapshot.data.data()["Details"].isEmpty) {
+                        if (!snapshot.data.data()["paymentHistory"].isEmpty) {
                           return Container(
                             child: ListView(
                               scrollDirection: Axis.vertical,
@@ -64,12 +63,12 @@ class PaymentHistory extends StatelessWidget {
                           );
                         } else {
                           return Container(
-                            padding: EdgeInsets.only(top: 15),
                             alignment: Alignment.topCenter,
-                            child: CustomText(
-                              text: "No Payment History Found...",
-                              color: Colors.black54,
-                              size: 15,
+                            child: Text(
+                              "No Payment hostry... ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w300, fontSize: 20),
                             ),
                           );
                         }

@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
 
-class AppInfoViewModel extends ChangeNotifier{
+class AppInfoViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
 
-  final String city = "Thanamalwila";
-  final String address = "Thanamalwila";
-  final String phoneNum = "+94716816135";
-  final String email = "shan@xdoto.io";
-  final String webName = "pub.dev";
-  final String webURL = "http://pub.dev";
-  final String fbName = "Shan Manage";
-  final String fbURL = "http://pub.dev";
+  final String team = "Wave-App Team";
+  final String address = "Nugegoda, Colombo LK";
+  final String phoneNum = "+94112342342";
+  final String email = "mail@waveapp.com";
+  final String webName = "www.waveapp.com";
+  final String webURL = "http://www.waveapp.com";
+  final String fbName = "Wave app";
+  final String fbURL = "http://www.fb/waveapp.com";
 
   Future<void> makePhoneCall() async {
     String url = 'tel:$phoneNum';
@@ -41,10 +41,9 @@ class AppInfoViewModel extends ChangeNotifier{
         forceSafariVC: true,
         forceWebView: true,
         headers: <String, String>{'my_header_key': 'my_header_value'},
-        );
+      );
     } else {
       throw 'Could not launch $url';
     }
   }
-
 }

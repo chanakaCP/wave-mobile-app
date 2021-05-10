@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:wave_mobile_app/models/Payment.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/snackbar/CustomSuccessSnackBar.dart';
 import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/cardDetails/PaymentInfoScreenView.dart';
 import '../../../../../Services/AuthService.dart';
@@ -41,8 +42,17 @@ class ElectricityBillScreenViewModel extends ChangeNotifier {
   onClickPay() {
     if (paymentFormKey.currentState.validate()) {
       if (amountController.text.isNumericOnly) {
-        Get.to(
-            PaymentInfoScreenView(isPay: true, amount: amountController.text));
+        Payment payment = Payment();
+        payment.amount = amountController.text;
+        payment.billNo = billNumberController.text;
+        payment.id = "1234";
+        payment.type = "Electricity Bill";
+        payment.status = "pending";
+
+        Get.to(PaymentInfoScreenView(
+          isPay: true,
+          payment: payment,
+        ));
       } else {
         CustomSnackBar().failed(msg: "Invalid Amount");
       }

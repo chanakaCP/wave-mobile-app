@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
+import 'package:wave_mobile_app/models/Payment.dart';
 import 'package:wave_mobile_app/screens/CustomWidgets/snackbar/CustomSuccessSnackBar.dart';
 import 'package:wave_mobile_app/screens/Features/profile/PaymentInfo/cardDetails/PaymentInfoScreenView.dart';
 
@@ -49,8 +50,17 @@ class PhoneBillScreenViewModel extends ChangeNotifier {
             isLoading = false;
             // isSuccess = true;
             if (amountController.text.isNumericOnly) {
+              Payment payment = Payment();
+              payment.amount = amountController.text;
+              payment.billNo = mobileController.text;
+              payment.id = "1234";
+              payment.type = "Electricity Bill";
+              payment.status = "pending";
+
               Get.to(PaymentInfoScreenView(
-                  isPay: true, amount: amountController.text));
+                isPay: true,
+                payment: payment,
+              ));
             } else {
               CustomSnackBar().failed(msg: "Invalid Amount");
             }

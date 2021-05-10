@@ -49,8 +49,8 @@ class AppInfoView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomContainer(
-                            title: "City :",
-                            name: model.city,
+                            title: "Team :",
+                            name: model.team,
                           ),
                           CustomContainer(
                             title: "Address :",

@@ -24,7 +24,7 @@ class FirstView extends StatelessWidget {
           child: Scaffold(
             body: CustomPageView(
               callbackHead: null,
-              title: "Wave",
+              title: "Wave App",
               childWidget: Column(
                 children: [
                   Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wave_mobile_app/models/Payment.dart';
 import '../../../../../Services/AuthService.dart';
 import '../../../../../Shared/SizeConfig.dart';
 import '../../../../CustomWidgets/CustomPageView.dart';
@@ -7,9 +8,9 @@ import 'AddCardDetails/AddCardDetailsView.dart';
 import 'MyCardDetails/MyCardDetailesView.dart';
 
 class PaymentInfoScreenView extends StatefulWidget {
-  PaymentInfoScreenView({@required this.isPay, this.amount});
+  PaymentInfoScreenView({@required this.isPay, this.payment});
   final bool isPay;
-  String amount;
+  Payment payment;
 
   @override
   _PaymentTabViewScreenState createState() => _PaymentTabViewScreenState();
@@ -57,7 +58,7 @@ class _PaymentTabViewScreenState extends State<PaymentInfoScreenView>
                 height: blockHeight * 88,
                 child: MyCardDetailsView(
                   isPay: this.widget.isPay,
-                  amount: this.widget.amount,
+                  payment: this.widget.payment,
                 ),
               ),
             ),

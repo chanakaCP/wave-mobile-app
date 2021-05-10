@@ -29,6 +29,7 @@ class AuthService {
   }
 
   Future registerWithEmailAndPassword(RegisterUser regUser) async {
+    List<Map<String, dynamic>> dummyList = [];
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: regUser.email, password: regUser.password);
@@ -40,6 +41,8 @@ class AuthService {
         'email': regUser.email,
         'id': result.user.uid,
         'profilePic': "",
+        'paymentHistory': dummyList,
+        'cardInfo': dummyList,
       });
       return _userFromFireBaseUser(user);
     } catch (e) {

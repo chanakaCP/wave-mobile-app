@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../../Shared/SizeConfig.dart';
 import '../../../CustomWidgets/CustomButton.dart';
 import '../../../CustomWidgets/CustomPageView.dart';
@@ -82,21 +81,6 @@ class TravelScreen extends StatelessWidget {
                               model.onClickProceed();
                             },
                           ),
-                          SizedBox(height: blockHeight * 2.5),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  blurRadius: 30,
-                                  spreadRadius: 2,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            child:  Image(image: AssetImage( "assets/Map.jpg"),fit: BoxFit.contain,)
-                          )
                         ],
                       ),
                     ),

@@ -35,6 +35,17 @@ class CustomSnackBar {
     );
   }
 
+  void notify({String msg}) {
+    return Get.snackbar(
+      "Notification",
+      msg,
+      icon: Icon(Icons.watch_later_outlined),
+      backgroundColor: Colors.grey[300],
+      snackPosition: SnackPosition.BOTTOM,
+      isDismissible: true,
+    );
+  }
+
   successWithCallback(
       {BuildContext context, IconData icon, String message, Widget callback}) {
     return ScaffoldMessenger.of(context)

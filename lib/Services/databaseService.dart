@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/models/CardDetails.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/snackbar/CustomSuccessSnackBar.dart';
 
 class DatabaseService {
   final firestoreInstance = FirebaseFirestore.instance;
@@ -89,26 +89,23 @@ class DatabaseService {
           .doc(user.uid.toString())
           .snapshots();
     } catch (e) {
+      CustomSnackBar().failed(msg: "Something went wrong...");
       print(" ERROR WHILE GETTING DATA (payments): " + e.toString());
     }
     return snapshot;
   }
 
-  Stream<dynamic> getPaymentHistory(BuildContext context) {
+  Stream<dynamic> getPaymentHistory() {
     User user = _auth.currentUser;
     Stream<DocumentSnapshot> snapshot;
-    final snackBar = SnackBar(
-      content: Text("Something went wrong"),
-      backgroundColor: Colors.red,
-    );
     try {
       snapshot = firestoreInstance
-          .collection("payments")
+          .collection("users")
           .doc(user.uid.toString())
           .snapshots();
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      print("ERROR WHILE GETTING PAYAMENT DETAILS :" + e.toString());
+      CustomSnackBar().failed(msg: "Something went wrong...");
+      print(" ERROR WHILE GETTING DATA (payments): " + e.toString());
     }
     return snapshot;
   }

@@ -42,28 +42,54 @@ class CustomPaymentHistoryCard extends StatelessWidget {
                     size: blockHeight * 2,
                   ),
                   Text(
-                    payment.date.toDate().toString(),
+                    payment.date.toString(),
                     style: TextStyle(
                       color: Colors.blue[700],
                     ),
                   )
                 ],
               ),
-              RichText(
-                text: TextSpan(
-                    text: "LKR ",
-                    style: TextStyle(
-                      fontSize: blockHeight * 2.5,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue[600],
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: payment.amount,
+              Column(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "LKR ",
+                      style: TextStyle(
+                        fontSize: blockHeight * 2.5,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[600],
                       ),
-                    ]),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: payment.amount,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: blockHeight),
+                  Row(
+                    children: [
+                      Icon(
+                        (payment.status == "success")
+                            ? Icons.check
+                            : Icons.error,
+                        color: (payment.status == "success")
+                            ? Colors.green
+                            : Colors.red,
+                        size: 20,
+                      ),
+                      SizedBox(width: blockWidth),
+                      CustomText(
+                        text: payment.status,
+                        color: (payment.status == "success")
+                            ? Colors.green
+                            : Colors.red,
+                        size: 3.5 * blockWidth,
+                      ),
+                    ],
+                  )
+                ],
               )
-              // Text("Shan")
             ],
           ),
         ),

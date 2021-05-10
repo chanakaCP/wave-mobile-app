@@ -1,3 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class ProfileScreenViewModel extends ChangeNotifier {}
+import 'package:wave_mobile_app/Services/AuthService.dart';
+
+class ProfileScreenViewModel extends ChangeNotifier {
+  onClickLogout() async {
+    await AuthService().signOut();
+  }
+}

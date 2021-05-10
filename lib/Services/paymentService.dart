@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:stripe_payment/stripe_payment.dart';
+import 'package:wave_mobile_app/Shared/const.dart' as Constants;
 import 'package:wave_mobile_app/models/StripeTransactionResponse.dart';
 import 'package:http/http.dart' as http;
 
 class StripeService {
-  static String apiBase = "https://api.stripe.com/v1";
+  static String apiBase = Constants.Const.STRIPE_BASE_URL;
   static String paymentApiUrl = "${StripeService.apiBase}/payment_intents";
-  static String secret =
-      "sk_test_51IoqQlSCkiL3pN0ucPTa2XyGPFLQ2EiFMeAjKzt3TyM1EIn8ESyNz7gKhp5EW66SgKDsOIXONZ5R08p8w1SQyBTL00HHXKM2fu";
+  static String secret = Constants.Const.STRIPE_SECRET_KEY;
   static Map<String, String> headers = {
     "Authorization": "Bearer ${StripeService.secret}",
     "Content-Type": "application/x-www-form-urlencoded",
@@ -16,8 +16,7 @@ class StripeService {
   static init() {
     StripePayment.setOptions(
       StripeOptions(
-        publishableKey:
-            "pk_test_51IoqQlSCkiL3pN0uPH1farK8etpfPUHTts9ZlkuJyHHjYu3uSPOrFvopoLkayFnc9oIkyO6sMBDNiawXtPboET4500VB9GD6Jz",
+        publishableKey: Constants.Const.STRIPE_PUBLISHED_KEY,
         merchantId: "Test",
         androidPayMode: "test",
       ),

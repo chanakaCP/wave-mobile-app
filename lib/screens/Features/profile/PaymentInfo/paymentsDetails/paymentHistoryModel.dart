@@ -13,23 +13,23 @@ class paymentHistoryModel extends ChangeNotifier {
   Stream paymenStream;
   Payment paymentDetails;
 
-  getDataStream(BuildContext context) {
-    paymenStream = databaseService.getPaymentHistory(context);
+  getDataStream() {
+    paymenStream = databaseService.getPaymentHistory();
     return paymenStream;
   }
 
   loadHistory(AsyncSnapshot<DocumentSnapshot> snapshot, BuildContext context) {
     if (snapshot.hasData && snapshot.data.exists) {
-      paymentList = snapshot.data["Details"];
+      paymentList = snapshot.data["paymentHistory"];
     }
-
     return paymentList
         .map((doc) => CustomPaymentHistoryCard(new Payment(
               id: doc["ID"],
               amount: doc["amount"],
               billNo: doc["billNo"],
               type: doc["type"],
-              date: doc["date"],
+              status: doc["status"],
+              date: doc["timestamp"].toDate(),
             )))
         .toList();
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wave_mobile_app/Services/AuthService.dart';
+import 'package:get/get.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Travel/map/mapView.dart';
 
 class TravelScreenViewModel extends ChangeNotifier {
   final AuthService authService = AuthService();
@@ -7,7 +9,6 @@ class TravelScreenViewModel extends ChangeNotifier {
   final formKey = GlobalKey<FormState>();
   final fromController = TextEditingController();
   final toController = TextEditingController();
-  bool isButtonClicked = false;
 
   void initialise() {
     fromController.text = "";
@@ -15,26 +16,7 @@ class TravelScreenViewModel extends ChangeNotifier {
   }
 
   onClickProceed() async {
-    isButtonClicked = true;
+    Get.to(MapViewScreen());
     notifyListeners();
   }
-
-//   final List<GoogleMapExampleAppPage> _allPages = <GoogleMapExampleAppPage>[
-//   MapUiPage(),
-//   MapCoordinatesPage(),
-//   MapClickPage(),
-//   AnimateCameraPage(),
-//   MoveCameraPage(),
-//   PlaceMarkerPage(),
-//   MarkerIconsPage(),
-//   ScrollingMapPage(),
-//   PlacePolylinePage(),
-//   PlacePolygonPage(),
-//   PlaceCirclePage(),
-//   PaddingPage(),
-//   SnapshotPage(),
-//   LiteModePage(),
-//   TileOverlayPage(),
-// ];
-
 }

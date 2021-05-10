@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomButton.dart';
 import 'package:wave_mobile_app/screens/Features/profile/AppInfo/AppInfoContainerView.dart';
 import 'ProfileScreenViewModel.dart';
 import 'PaymentInfo/PaymentInfoConteinerView.dart';
@@ -17,15 +18,25 @@ class ProfileScreen extends StatelessWidget {
       viewModelBuilder: () => ProfileScreenViewModel(),
       builder: (_, model, child) {
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: blockWidth * 1.5, vertical: blockHeight * 5),
+          padding: EdgeInsets.symmetric(
+              horizontal: blockWidth * 1.5, vertical: blockHeight * 5),
           child: Column(
             children: [
-              SizedBox(height: blockHeight * 10),
+              SizedBox(height: blockHeight * 7.5),
               PersonalInfoContainer(),
               SizedBox(height: blockHeight * 2),
               PaymentInfoContainer(),
               SizedBox(height: blockHeight * 2),
-              AppInfoContainer()
+              AppInfoContainer(),
+              SizedBox(height: blockHeight * 3),
+              CustomButton(
+                title: "Logout",
+                bgColor: Colors.blue[800],
+                textColor: Colors.white,
+                callback: () async {
+                  await model.onClickLogout();
+                },
+              ),
             ],
           ),
         );

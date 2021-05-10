@@ -18,7 +18,7 @@ class HomeScreenViewModel extends ChangeNotifier {
       callback: BillScreen(),
     ),
     Topic(
-      title: "Communications and Media",
+      title: "Communication and Media",
       imageURL: "assets/icons/media.png",
       idetifier: "media",
       callback: MediaScreen(),
