@@ -5,7 +5,6 @@ import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:search_map_place/search_map_place.dart';
 import 'package:wave_mobile_app/Shared/const.dart' as Constants;
-import 'package:wave_mobile_app/screens/CustomWidgets/CustomIconButton.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Travel/map/customMapTypeSelectWidget.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Travel/map/mapViewModel.dart';
 
@@ -37,22 +36,6 @@ class MapViewScreen extends StatelessWidget {
                   mapType: model.mapType,
                   markers: model.markers,
                 ),
-                // Padding(
-                //   padding: EdgeInsets.only(
-                //     top: 12 * blockHeight,
-                //     right: 5 * blockWidth,
-                //   ),
-                //   child: Align(
-                //     alignment: Alignment.topRight,
-                //     child: FloatingActionButton(
-                //       backgroundColor: Colors.blueAccent[200],
-                //       child: Icon(Icons.map_rounded, size: 7.5 * blockWidth),
-                //       onPressed: () => {
-                //         model.onTapChangeViewButton(),
-                //       },
-                //     ),
-                //   ),
-                // ),
                 Align(
                   alignment: Alignment.topRight,
                   child: SpeedDial(
@@ -72,6 +55,20 @@ class MapViewScreen extends StatelessWidget {
                     shape: CircleBorder(),
                     children: [
                       CustomMapTypeSelect().customMapTypeSelectWidget(
+                        title: "Normal",
+                        img: "assets/icons/normal.jpg",
+                        callback: () {
+                          model.onTapChangeViewButton(MapType.normal);
+                        },
+                      ),
+                      CustomMapTypeSelect().customMapTypeSelectWidget(
+                        title: "Satellite",
+                        img: "assets/icons/satelite.jpg",
+                        callback: () {
+                          model.onTapChangeViewButton(MapType.satellite);
+                        },
+                      ),
+                      CustomMapTypeSelect().customMapTypeSelectWidget(
                         title: "Terrain",
                         img: "assets/icons/terrain.jpg",
                         callback: () {
@@ -83,20 +80,6 @@ class MapViewScreen extends StatelessWidget {
                         img: "assets/icons/hybrid.jpg",
                         callback: () {
                           model.onTapChangeViewButton(MapType.hybrid);
-                        },
-                      ),
-                      CustomMapTypeSelect().customMapTypeSelectWidget(
-                        title: "Satellite",
-                        img: "assets/icons/satellite.jpg",
-                        callback: () {
-                          model.onTapChangeViewButton(MapType.satellite);
-                        },
-                      ),
-                      CustomMapTypeSelect().customMapTypeSelectWidget(
-                        title: "Normal",
-                        img: "assets/icons/normal.jpg",
-                        callback: () {
-                          model.onTapChangeViewButton(MapType.normal);
                         },
                       ),
                     ],
