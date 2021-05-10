@@ -7,6 +7,8 @@ class MapViewModel extends ChangeNotifier {
   GoogleMapController mapController;
   Position currentPosition;
   LatLng markedLatLng;
+  MapType mapType = MapType.normal;
+
   Set<Marker> markers = {};
   onMapCreated(GoogleMapController googleMapController) {
     mapController = googleMapController;
@@ -36,9 +38,7 @@ class MapViewModel extends ChangeNotifier {
           title: "title",
         ),
         onDragEnd: (newPosition) {
-          print("prev : " + markerPosition.toString());
           markerPosition = newPosition;
-          print("new : " + markerPosition.toString());
           notifyListeners();
         },
       ),
@@ -48,5 +48,10 @@ class MapViewModel extends ChangeNotifier {
     mapController.animateCamera(
       CameraUpdate.newLatLng(markerPosition),
     );
+  }
+
+  onTapChangeViewButton(MapType newType) {
+    mapType = newType;
+    notifyListeners();
   }
 }

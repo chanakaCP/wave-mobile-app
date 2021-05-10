@@ -1,71 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:wave_mobile_app/Shared/SizeConfig.dart';
 import 'package:search_map_place/search_map_place.dart';
 import 'package:wave_mobile_app/Shared/const.dart' as Constants;
+import 'package:wave_mobile_app/screens/CustomWidgets/CustomIconButton.dart';
+import 'package:wave_mobile_app/screens/Features/Home/Travel/map/customMapTypeSelectWidget.dart';
 import 'package:wave_mobile_app/screens/Features/Home/Travel/map/mapViewModel.dart';
-
-// class MapViewScreen extends StatefulWidget {
-//   @override
-//   _MapViewScreenState createState() => _MapViewScreenState();
-// }
-
-// class _MapViewScreenState extends State<MapViewScreen> {
-//   double blockHeight = SizeConfig.safeBlockVertical;
-//   double blockWidth = SizeConfig.safeBlockHorizontal;
-
-//   GoogleMapController mapController;
-//   Position currentPosition;
-//   LatLng currentLatLng;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         resizeToAvoidBottomInset: true,
-//         body: Stack(
-//           children: <Widget>[
-//             GoogleMap(
-//               onMapCreated: (GoogleMapController googleMapController) {
-//                 setState(() {
-//                   mapController = googleMapController;
-//                 });
-//               },
-//               onLongPress: (argument) {},
-//               initialCameraPosition: CameraPosition(
-//                 zoom: 15.0,
-//                 target: LatLng(6.9271, 79.8612),
-//               ),
-//               mapType: MapType.normal,
-//             ),
-//             Container(
-//               padding: EdgeInsets.only(top: blockHeight * 2.5),
-//               alignment: Alignment.topCenter,
-//               child: SearchMapPlaceWidget(
-//                 apiKey: Constants.Const.GOOGLE_MAP_API_KEY,
-//                 placeholder: "Enter Location",
-//                 language: "en",
-//                 hasClearButton: true,
-//                 placeType: PlaceType.address,
-//                 onSelected: (Place place) async {
-//                   Geolocation geolocation = await place.geolocation;
-//                   mapController.animateCamera(
-//                     CameraUpdate.newLatLng(geolocation.coordinates),
-//                   );
-//                   mapController.animateCamera(
-//                     CameraUpdate.newLatLngBounds(geolocation.bounds, 0),
-//                   );
-//                 },
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class MapViewScreen extends StatelessWidget {
   double blockHeight = SizeConfig.safeBlockVertical;
@@ -92,8 +34,73 @@ class MapViewScreen extends StatelessWidget {
                     zoom: 15.0,
                     target: LatLng(6.9271, 79.8612),
                   ),
-                  mapType: MapType.normal,
+                  mapType: model.mapType,
                   markers: model.markers,
+                ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     top: 12 * blockHeight,
+                //     right: 5 * blockWidth,
+                //   ),
+                //   child: Align(
+                //     alignment: Alignment.topRight,
+                //     child: FloatingActionButton(
+                //       backgroundColor: Colors.blueAccent[200],
+                //       child: Icon(Icons.map_rounded, size: 7.5 * blockWidth),
+                //       onPressed: () => {
+                //         model.onTapChangeViewButton(),
+                //       },
+                //     ),
+                //   ),
+                // ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: SpeedDial(
+                    marginEnd: 5 * blockWidth,
+                    marginBottom: 20 * blockHeight,
+                    icon: Icons.map,
+                    activeIcon: Icons.map,
+                    buttonSize: 12.5 * blockWidth,
+                    closeManually: false,
+                    renderOverlay: false,
+                    curve: Curves.bounceIn,
+                    overlayColor: Colors.black12,
+                    overlayOpacity: 0.5,
+                    backgroundColor: Colors.blueAccent[200],
+                    foregroundColor: Colors.white,
+                    elevation: 5,
+                    shape: CircleBorder(),
+                    children: [
+                      CustomMapTypeSelect().customMapTypeSelectWidget(
+                        title: "Terrain",
+                        img: "assets/icons/terrain.jpg",
+                        callback: () {
+                          model.onTapChangeViewButton(MapType.terrain);
+                        },
+                      ),
+                      CustomMapTypeSelect().customMapTypeSelectWidget(
+                        title: "Hybrid",
+                        img: "assets/icons/hybrid.jpg",
+                        callback: () {
+                          model.onTapChangeViewButton(MapType.hybrid);
+                        },
+                      ),
+                      CustomMapTypeSelect().customMapTypeSelectWidget(
+                        title: "Satellite",
+                        img: "assets/icons/satellite.jpg",
+                        callback: () {
+                          model.onTapChangeViewButton(MapType.satellite);
+                        },
+                      ),
+                      CustomMapTypeSelect().customMapTypeSelectWidget(
+                        title: "Normal",
+                        img: "assets/icons/normal.jpg",
+                        callback: () {
+                          model.onTapChangeViewButton(MapType.normal);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
                 Positioned(
                   top: 2.5 * blockHeight,
